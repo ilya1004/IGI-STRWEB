@@ -1,0 +1,42 @@
+services:
+  frontend:
+    build:
+      context: frontend
+    ports:
+      - 3000:3000
+    stdin_open: true
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    restart: always
+    networks:
+      - react-express
+
+  backend:
+    restart: always
+    build:
+      context: backend
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    networks:
+      - express-mongo
+      - react-express
+    expose: 
+      - 3000
+
+  mongo:
+    restart: always
+    image: mongo:4.2.0
+    volumes:
+      - ./data:/data/db
+    networks:
+      - express-mongo
+    expose:
+      - 27017
+
+networks:
+  react-express:
+    driver: bridge
+  express-mongo:
+    driver: bridge
