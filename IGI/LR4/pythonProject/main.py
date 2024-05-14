@@ -11,6 +11,7 @@ Rabets I.O.
 15.03.2024
 """
 
+
 if __name__ == "__main__":
     while True:
         print("-" * 50)

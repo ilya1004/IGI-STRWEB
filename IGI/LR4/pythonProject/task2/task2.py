@@ -8,7 +8,7 @@ class Task2:
         self.text_data = ""
 
     def solve(self):
-        self.read_text_file()
+        self.__read_text_file()
         res = self.__show_text_parameters()
         res += self.__show_string_parameters()
         file_path = "task2_res.txt"
@@ -21,13 +21,13 @@ class Task2:
         reg_count_sentences = r"(\.|\.\.\.|\?|\!)"
         lst = self.count_occurrences(reg_count_sentences)
         print(f"Количество предложений в тексте: {len(lst)}")
-        res = f"Количество предложений в тексте: {len(lst)}"
+        res = f"Количество предложений в тексте: {len(lst)}\n"
         print(f"Количество повествовательных предложений в тексте: {lst.count(".") + lst.count("...")}")
-        res += f"Количество повествовательных предложений в тексте: {lst.count(".") + lst.count("...")}"
+        res += f"Количество повествовательных предложений в тексте: {lst.count(".") + lst.count("...")}\n"
         print(f"Количество вопросительных предложений в тексте: {lst.count("?")}")
-        res += f"Количество вопросительных предложений в тексте: {lst.count("?")}"
+        res += f"Количество вопросительных предложений в тексте: {lst.count("?")}\n"
         print(f"Количество побудительных предложений в тексте: {lst.count("!")}")
-        res += f"Количество побудительных предложений в тексте: {lst.count("!")}"
+        res += f"Количество побудительных предложений в тексте: {lst.count("!")}\n"
 
         prev_index = 0
         lens = []
@@ -39,23 +39,23 @@ class Task2:
             prev_index = index + 2
 
         print(f"Средняя длина предложений в символах: {sum(lens) / len(lens)}")
-        res += f"Средняя длина предложений в символах: {sum(lens) / len(lens)}"
+        res += f"Средняя длина предложений в символах: {sum(lens) / len(lens)}\n"
 
         reg_word = r"\b\w+\b"
         lst = self.count_occurrences(reg_word)
 
         print(f"Средняя длина слов в символах: {reduce(lambda x, y: x + len(y), lst, 0) / len(lst):.3f}")
-        res += f"Средняя длина слов в символах: {reduce(lambda x, y: x + len(y), lst, 0) / len(lst):.3f}"
+        res += f"Средняя длина слов в символах: {reduce(lambda x, y: x + len(y), lst, 0) / len(lst):.3f}\n"
 
         reg = r"(:|;){1}\-*(\(|\)|\[|\])+"
         lst = self.count_occurrences(reg)
         print(f"Количество смайликов в заданном тексте: {len(lst)}")
-        res += f"Количество смайликов в заданном тексте: {len(lst)}"
+        res += f"Количество смайликов в заданном тексте: {len(lst)}\n"
 
-        reg = r"\d{4}-\d{2}-\d{2}"
+        reg = r"\d{4}"
         lst = self.count_occurrences(reg)
         print("Список дат в формате YYYY-MM-DD:")
-        res += "Список дат в формате YYYY-MM-DD:"
+        res += "Список дат в формате YYYY-MM-DD:\n"
         print(*lst)
         res += " ".join(lst)
 
@@ -63,24 +63,25 @@ class Task2:
 
     def __show_string_parameters(self):
         str_q = input("\nВведите строку на английском языке:\n")
+        res = str_q
         reg = r"\b[A-z]*[qwrtpsdfghjklzxcvbnmQWRTPSDFGHJKLZXCVBNM][aeiouyAEIOUY][A-z]\b"
         lst = self.count_occurrences(reg, str_q)
         print("Список слов, у которых третья с конца буква согласная, а предпоследняя – гласная:")
-        res = "Список слов, у которых третья с конца буква согласная, а предпоследняя – гласная:"
+        res += "Список слов, у которых третья с конца буква согласная, а предпоследняя – гласная:\n"
         print(*lst)
         res += " ".join(lst)
 
         reg_word = r"\b\w+\b"
         lst = self.count_occurrences(reg_word, str_q)
         print(f"Количество слов в строке: {len(lst)}")
-        res += f"Количество слов в строке: {len(lst)}"
+        res += f"Количество слов в строке: {len(lst)}\n"
 
         max_word = max(lst, key=lambda x: len(x))
         print(f"Самое длинное слово в строке: {max_word} под номером {lst.index(max_word) + 1}")
-        res += f"Самое длинное слово в строке: {max_word} под номером {lst.index(max_word) + 1}"
+        res += f"Самое длинное слово в строке: {max_word} под номером {lst.index(max_word) + 1}\n"
 
         print(f"Нечетные слова в строке:")
-        res += f"Нечетные слова в строке:"
+        res += f"Нечетные слова в строке:\n"
         for i in range(len(lst)):
             if i % 2 == 1:
                 print(lst[i], end=" ")
@@ -89,7 +90,7 @@ class Task2:
         res += "\n"
         return res
 
-    def read_text_file(self, file_path="task2_data.txt"):
+    def __read_text_file(self, file_path="task2_data.txt"):
         try:
             with open(file_path, 'r') as file:
                 self.text_data = file.read()

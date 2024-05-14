@@ -5,6 +5,7 @@ from task5.numpy_test import NumpyTest
 
 class Task5:
     def __init__(self):
+
         self.matrix = None
 
     def solve(self):

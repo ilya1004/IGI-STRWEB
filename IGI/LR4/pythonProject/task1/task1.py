@@ -57,10 +57,15 @@ class Task1:
         print("Enter 1 to enter data from keyboard and other number to generate 5 data items:")
         n = Input.input_int()
         if n == 1:
+            print(f"Enter {5} students:")
             for i in range(5):
+                print(f"Enter the surname of {i + 1} student:")
                 surname = input()
+                print(f"Enter the street of {i + 1} student:")
                 street = Input.input_int()
+                print(f"Enter the house number of {i + 1} student:")
                 house = Input.input_int()
+                print(f"Enter the apartment number of {i + 1} student:")
                 apartment = Input.input_int()
                 self.data.append({"surname": surname, "address": Address(street, house, apartment)})
         else:
