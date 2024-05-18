@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load tz %}
+{% block title %}Сервис проката автомобилей{% endblock title %}
+{% block header %}Сервис проката автомобилей{% endblock header %}
+{% block content %}
+<h2>Последняя новость</h2>
+<div
+style="
+  display: flex;
+  align-items: start;
+  border-radius: 10px;    
+  border: 1px solid black;
+  margin: 10px 0px;
+"
+>
+<img
+  src="{{ new.image.url }}"
+  height="130"
+  style="
+  margin: 10px 0px 10px 10px; 
+  border-radius: 10px;"
+  />
+<div style="margin: 0px 0px 0px 20px">
+  <h3>{{ new.title }}</h3>
+  <p>{{ new.short_description }}</p>
+  <a href={{ new.url }}>Читать далее</a>
+</div>
+</div>
+
+<div>
+    <p>Текущая дата:</p>
+    <h3>{{date}}</h3>
+    {% get_current_timezone as TIME_ZONE %}
+    <p>Ваша временая зона: {{TIME_ZONE}}</p>
+    <p><pre>{{calendar}}</pre></p>
+</div>
+
+{% endblock content %}

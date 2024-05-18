@@ -1,0 +1,28 @@
+{% extends "base.html" %} 
+{% block title %}Отзывы{% endblock title %} 
+{% block header %}Отзывы{% endblock header %} 
+{% block content %} 
+{% if request.user.is_authenticated %}
+<div>
+    <a href={% url "add_review" %}>Добавить отзыв</a>
+</div>
+{% endif %}
+{% for review in reviews %}
+<div
+  style="
+    display: flex;
+    align-items: start;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin: 10px 0px;
+  "
+>
+  <div style="margin: 0px 0px 0px 20px">
+    <h3>{{ review.title }}</h3>
+    <p>Отправитель: {{ review.sender.user.username }}</p>
+    <p>Оценка: {{ review.rate }}</p>
+    <div>{{ review.text }}</div>
+    <p>{{ review.date }}</p>
+  </div>
+</div>
+{% endfor %} {% endblock content %}

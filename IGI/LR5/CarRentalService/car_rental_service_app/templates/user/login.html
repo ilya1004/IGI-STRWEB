@@ -1,0 +1,20 @@
+{% extends "base.html" %} 
+{% block title %}Вход{% endblock title %}
+{% block header %}Вход{% endblock header %} 
+{% block content %}
+<form method="post">
+  {% csrf_token %} 
+  {{ form.as_p }}
+  <button type="submit">Войти</button>
+  <div>
+    <a href="{% url 'register'%}">Зарегистрироваться</a>
+  </div>
+</form>
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li{% if messages.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+{% endblock content %}

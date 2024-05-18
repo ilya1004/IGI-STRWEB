@@ -1,0 +1,13 @@
+{% extends "base.html" %} 
+{% block title %}Факты про котов{% endblock title %} 
+{% block header %}Факты про котов{% endblock header %} 
+{% block content %}
+<ul>
+  {% for item in facts %}
+  <li>
+    <div>{{item.fact}}</div>
+    <br/>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock content %}

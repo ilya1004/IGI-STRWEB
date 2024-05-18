@@ -1,0 +1,74 @@
+{% extends "base.html" %} 
+{% block title %}Статистика{% endblock title%}
+{% block header %}Статистика{% endblock header %}
+{% block content %}
+<h3>Клиенты:</h3>
+{% for client in clients %}
+    <div
+        style="display: flex;
+        align-items: start;
+        border-radius: 10px;
+        border: 1px solid black;
+        margin: 5px 0px;">
+        <div>
+        </div>
+        <div style="margin: 0px 0px 0px 20px">
+            <h3>{{ client.surname }} {{ client.name }} {{ client.patronymic }}</h3>
+            <p>Никнейм: {{ client.user.username }}</p>
+            <p>Электронная почта: {{ client.email }}</p>
+        </div>
+        
+      </div>
+    </div>
+{% endfor %}
+
+<h3>Заказы:</h3>
+{% for order in orders %}
+    <div
+        style="display: flex;
+        align-items: start;
+        border-radius: 10px;
+        border: 1px solid black;
+        margin: 5px 0px;">
+        <div>
+        </div>
+        <div style="margin: 0px 0px 0px 20px">  
+            <p>Машина: {{ order.car.brand.name }} {{ order.car.model }}</p>
+            <p>{{ order.date_start }} - {{ order.date_end }}</p>
+            <p>Конечная сумма аренды: {{ order.final_sum }}</p>
+        </div>
+        
+      </div>
+    </div>
+{% endfor %}
+
+<h3>Общая сумма продаж: {{ total_sum }}</h3>
+<div style="
+    border-radius: 10px;
+    border: 1px dotted black;
+    margin: 5px 0px;
+    padding: 0px 0px 0px 10px">
+    <p>Среднее арифметичекое по продажам: {{ sales_average }}</p>
+    <p>Мода по продажам: {{ sales_mode }}</p>
+    <p>Медиана по продажам: {{ sales_median }}</p>
+</div>
+<div style="
+    border-radius: 10px;
+    border: 1px dotted black;
+    margin: 5px 0px;
+    padding: 0px 0px 0px 10px">
+    <p>Среднее арифметичекое по возрастам клиентов: {{ age_average }}</p>
+    <p>Медиана по возрастам клиентов: {{ age_median }}</p>
+</div>
+<div style="
+    border-radius: 10px;
+    border: 1px dotted black;
+    margin: 5px 0px;
+    padding: 0px 0px 0px 10px">
+    <p>Наиболее популярный бренд: {{ popular_brand }}</p>
+    <p>Наиболее прибыльный бренд: {{ profitable_brand }}</p>
+</div>
+<h3>Распределение пользователей по возрастам</h3>
+{{ figure|safe }}
+
+{% endblock content %}

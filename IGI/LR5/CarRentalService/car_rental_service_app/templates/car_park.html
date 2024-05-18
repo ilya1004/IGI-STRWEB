@@ -1,0 +1,99 @@
+{% extends "base.html" %} 
+{% block title %}Автопарк{% endblock title %} 
+{% block header %}Автопарк{% endblock header %} 
+{% block content %}
+{% if request.user.is_superuser %}
+<form method="POST" name="add_car">
+  {% csrf_token %}
+  <button 
+    type="submit" 
+    name="add_car"
+    style="margin: 0px 0px 10px 0px">
+    Добавить машину
+  </button>
+</form>
+<form method="GET" >
+  {{ form.as_p }}
+  <button 
+    type="submit" 
+    style="margin-bottom: 6px; margin-top: 6px;">Фильтровать</button>
+</form>
+{% endif %}
+<form method="GET" name="sort">
+  <select name="sorting" onchange="this.form.submit()">
+      <option value="name" 
+      {% if request.GET.sorting == 'model' %}
+      selected
+      {% endif %}
+      >Сортировать по модели</option>
+      <option value="price" 
+      {% if request.GET.sorting == 'price' %}
+      selected
+      {% endif %}
+      >Сортировать по цене</option>
+      <option value="brand" 
+      {% if request.GET.sorting == 'brand' %}
+      selected
+      {% endif %}
+      >Сортировать по марке</option>
+  </select>
+</form>
+  {% for car in cars %}
+    <div
+      style="
+        display: flex;
+        align-items: start;
+        border-radius: 10px;    
+        border: 1px solid black;
+        margin: 10px 0px;
+      "
+    >
+      <div style="margin: 0px 0px 0px 20px">
+        <h3>{{ car.brand.name }} {{ car.model }}</h3>
+        <p>Тип кузова: {{ car.body_type.name }}</p>
+        <p>Номер машины: {{ car.number }}</p>
+        <p>Год выпуска: {{ car.year }}</p>
+        <p>Стоимость машины: {{ car.price }}</p>
+        <p>Суточная стоимость проката: {{ car.daily_price }}</p>
+        {% if car.is_ordered == True %}
+        <p><b>Машина заказана</b></p>
+        {% endif %}
+        {% if request.user.client and not request.user.is_superuser and car.is_ordered == False %}
+        <form method="post" name="make_order">
+          {% csrf_token %}
+          <button 
+            type="submit" 
+            name="make_order" 
+            value={{ car.pk }}
+            style="margin: 0px 0px 10px 0px">
+            Взать напрокат
+          </button>
+        </form>
+        {% endif %}
+        {% if request.user.is_superuser %}
+        <form method="post" name="edit_car">
+          {% csrf_token %}
+          <button 
+            type="submit" 
+            name="edit_car" 
+            value={{ car.pk }}
+            style="margin: 0px 0px 10px 0px">
+            Редактировать
+          </button>
+        </form>
+        <form method="post" name="delete_car">
+          {% csrf_token %}
+          <button
+            type="submit"
+            name="delete_car"
+            value={{ car.pk }}
+            style="margin: 0px 0px 10px 0px">
+            Удалить
+          </button>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+    
+  {% endfor %}
+{% endblock content %}

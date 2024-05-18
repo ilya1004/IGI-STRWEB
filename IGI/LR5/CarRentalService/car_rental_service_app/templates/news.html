@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Новости{% endblock title %}
+{% block header %}Новости{% endblock header %}
+{% block content %}
+{% for new in news %}
+<div
+  style="
+    display: flex;
+    align-items: start;
+    border-radius: 10px;    
+    border: 1px solid black;
+    margin: 10px 0px;
+  "
+>
+<img
+    src="{{ new.image.url }}"
+    height="130"
+    style="
+    margin: 10px 0px 10px 10px; 
+    border-radius: 10px;"
+    />
+  <div style="margin: 0px 0px 0px 20px">
+    <h3>{{ new.title }}</h3>
+    <p>{{ new.short_description }}</p>
+    <a href={{ new.url }}>Читать далее</a>
+  </div>
+</div>
+{% endfor %}
+{% endblock content %}

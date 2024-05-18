@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Штрафы{% endblock title %}
+{% block header %}Штрафы{% endblock header %}
+{% block content %}
+{% if request.user.is_superuser %}
+<form method="post" name="add_fine">
+  {% csrf_token %}
+  <button 
+    type="submit" 
+    name="add_fine"
+    style="margin: 0px 0px 10px 0px">
+    Добавить штраф
+  </button>
+</form>        
+{% endif %}
+{% for fine in fines %}
+<div
+  style="
+    display: flex;
+    align-items: start;
+    border-radius: 10px;    
+    border: 1px solid black;
+    margin: 10px 0px;"
+    >
+  <div style="margin: 0px 0px 0px 20px">
+    <h3>{{ fine.name }} </h3>
+    <p>Размер штрафа: {{ fine.amount }}</p>
+    {% if request.user.is_superuser %}
+        <form method="post" name="edit_fine">
+          {% csrf_token %}
+          <button 
+            type="submit" 
+            name="edit_fine"
+            value={{ fine.pk }}
+            style="margin: 0px 0px 10px 0px">
+            Редактировать
+          </button>
+        </form>
+        <form method="post" name="delete_fine">
+          {% csrf_token %}
+          <button
+            type="submit"
+            name="delete_fine"
+            value={{ fine.pk }}
+            style="margin: 0px 0px 10px 0px">
+            Удалить
+          </button>
+        </form>
+      {% endif %}
+  </div>
+</div>
+{% endfor %}
+{% endblock content %}

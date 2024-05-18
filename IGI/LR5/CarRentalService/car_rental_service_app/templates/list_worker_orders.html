@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Список взятах напрокат машин{% endblock title %}
+{% block header %}Список взятах напрокат машин{% endblock header %}
+{% block content %}
+  {% for order in orders %}
+    <div
+      style="
+        display: flex;
+        align-items: start;
+        border-radius: 10px;    
+        border: 1px solid black;
+        margin: 10px 0px;"
+    >
+      <div style="margin: 0px 0px 0px 20px">
+        <h3>{{ order.0.date_start }} - {{ order.0.date_end }}</h3>
+        <p>Машина: {{ order.0.car.brand.name }} {{ order.0.car.model }}</p>
+        <p>Сумма аренды машины: {{ order.0.rental_amount }}</p>
+        <p>Сумма скидки: {{ order.0.discount_amount }}</p>
+        <p>Сумма штрафов: {{ order.0.fine_amount }}</p>
+        <p>Конечная сумма аренды: {{ order.0.final_sum }}</p>
+        <form method="post" name="give_fine">
+          {% csrf_token %}
+          <button
+            type="submit"
+            name="give_fine"
+            value={{ order.0.pk }}
+            style="margin: 0px 0px 10px 10px">
+            Добавить штраф
+          </button>
+        </form>
+        <p>Штрафы:</p>
+        <ul>
+        {% for fine in order.1 %}
+          <li>{{ fine.name }}</li>
+        {% endfor %}
+        </ul>
+        <p>Клиент:</p>
+        <div
+        style="display: flex;
+        align-items: start;
+        border-radius: 10px;
+        border: 1px dotted black;
+        margin: 10px 0px;
+        padding: 0px 10px 0px 0px;">
+        <div>
+        <img
+            src="{{ order.0.client.image.url }}"
+            height="300"
+            style=
+              "margin: 10px 0px 10px 10px; 
+              border-radius: 10px;"
+        />
+        </div>
+        <div style="margin: 0px 0px 0px 20px">
+            <h3>{{ order.0.client.surname }} {{ order.0.client.name }} {{ order.0.client.patronymic }}</h3>
+            <p>Никнейм: {{ order.0.client.user.username }}</p>
+            <p>Электронная почта: {{ order.0.client.email }}</p>
+            <p>Номер телефона: {{ order.0.client.phone_number }}</p>
+            <p>Адрес: {{ order.0.client.address }}</p>
+            <p>Дата рождения: {{ order.0.client.birthday_date }}</p>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock content %}

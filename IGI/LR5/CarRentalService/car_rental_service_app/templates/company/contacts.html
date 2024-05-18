@@ -1,0 +1,66 @@
+{% extends "base.html" %} 
+{% block title %}Контакты{% endblock title %} 
+{% block header %}Контакты{% endblock header %} 
+{% block content %}
+{% if request.user.is_superuser %}
+<form method="post" name="add_worker">
+  {% csrf_token %}
+  <button 
+    type="submit" 
+    name="add_worker"
+    style="margin: 0px 0px 10px 0px">
+    Добавить сотрудника
+  </button>
+</form>        
+{% endif %}
+  {% for worker in workers %}
+    <div
+      style="
+        display: flex;
+        align-items: start;
+        border-radius: 10px;    
+        border: 1px solid black;
+        margin: 10px 0px;
+      "
+    >
+    <div>
+      <img
+        src="{{ worker.image.url }}"
+        height="230"
+        style="
+            margin: 10px 0px 10px 10px; 
+            border-radius: 10px;"
+      />
+      {% if request.user.is_superuser %}
+        <form method="post" name="edit_worker">
+          {% csrf_token %}
+          <button 
+            type="submit" 
+            name="edit_worker"
+            value={{ worker.pk }}
+            style="margin: 0px 0px 10px 10px">
+            Редактировать
+          </button>
+        </form>
+        <form method="post" name="delete_worker">
+          {% csrf_token %}
+          <button
+            type="submit"
+            name="delete_worker"
+            value={{ worker.pk }}
+            style="margin: 0px 0px 10px 10px">
+            Удалить
+          </button>
+        </form>
+        {% endif %}
+    </div>
+      <div style="margin: 0px 0px 0px 20px">
+        <h3>{{ worker.name }} {{ worker.surname }}</h3>
+        <p>Должность: {{ worker.position }}</p>
+        <p>Описание работы: {{ worker.work_description }}</p>
+        <p>Электронная почта: {{ worker.email }}</p>
+        <p>Номер телефона: {{ worker.phone_number }}</p>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock content %}

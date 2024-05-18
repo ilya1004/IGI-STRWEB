@@ -1,0 +1,56 @@
+{% extends "base.html" %} 
+{% block title %}Список клиентов{% endblock title %} 
+{% block header %}Список клиентов{% endblock header %} 
+{% block content %}
+
+{% for client in data %}
+    <div
+        style="display: flex;
+        align-items: start;
+        border-radius: 10px;
+        border: 1px solid black;
+        margin: 10px 0px;">
+        <div>
+        <img
+            src="{{ client.0.image.url }}"
+            height="300"
+            style="margin: 10px 0px 10px 10px; border-radius: 10px"
+        />
+        {% if request.user.is_superuser %}
+        <form method="post" name="edit_user">
+          {% csrf_token %}
+          <button 
+            type="submit" 
+            name="edit_user" 
+            value={{ client.0.pk }}
+            style="margin: 0px 0px 10px 10px">
+            Редактировать
+          </button>
+        </form>
+        <form method="post" name="delete_user">
+          {% csrf_token %}
+          <button
+            type="submit"
+            name="delete_user"
+            value={{ client.0.pk }}
+            style="margin: 0px 0px 10px 10px">
+            Удалить
+          </button>
+        </form>
+        {% endif %}
+        </div>
+        <div style="margin: 0px 0px 0px 20px">
+            <h3>{{ client.0.surname }} {{ client.0.name }} {{ client.0.patronymic }}</h3>
+            <p>Никнейм: {{ client.0.user.username }}</p>
+            <p>Электронная почта: {{ client.0.email }}</p>
+            <p>Номер телефона: {{ client.0.phone_number }}</p>
+            <p>Адрес: {{ client.0.address }}</p>
+            <p>Дата рождения: {{ client.0.birthday_date }}</p>
+            <p>Полная стоимость заказов: {{ client.1 }}</p>
+        </div>
+        
+      </div>
+    </div>
+    
+  {% endfor %}
+{% endblock content %}

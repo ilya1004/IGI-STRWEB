@@ -1,0 +1,14 @@
+{% extends "base.html" %} 
+{% block title %}Словарь терминов и понятий{% endblock title %} 
+{% block header %}Словарь терминов и понятий{% endblock header %} 
+{% block content %}
+<ul>
+  {% for item in terms %}
+  <li>
+    <div>{{item.question}}</div>
+    <div>{{item.response}}</div>
+    <br/>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock content %}

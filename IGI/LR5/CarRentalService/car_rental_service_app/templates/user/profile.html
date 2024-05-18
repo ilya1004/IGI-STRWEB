@@ -1,0 +1,40 @@
+{% extends "base.html" %} 
+{% block title %}Мой профиль{% endblock title %} 
+{% block header %}Мой профиль{% endblock header %} 
+{% block content %}
+
+<div
+  style="
+    display: flex;
+    align-items: start;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin: 10px 0px;
+  "
+>
+  <img
+    src="{{ profile.image.url }}"
+    height="300"
+    style="margin: 10px 0px 10px 10px; border-radius: 10px"
+  />
+  <div style="margin: 0px 0px 0px 20px">
+    <h3>{{ profile.surname }} {{ profile.name }} {{ profile.patronymic }}</h3>
+    <p>Электронная почта: {{ profile.email }}</p>
+    <p>Номер телефона: {{ phone_number }}</p>
+    {% if is_worker %}
+        <p>Должность: {{ profile.position }}</p>
+      {% else %}
+        <p>Адрес: {{ profile.address }}</p>
+        <p>Дата рождения: {{ profile.birthday_date }}</p>
+    {% endif %}
+    
+  </div>
+  
+</div>
+{% if not is_worker %}
+  <div>
+    <p><a href="{% url 'change_pass'%}">Сменить пароль</a></p>
+    <p><a href="{% url 'edit_profile'%}">Редактировать профиль</a></p>
+  </div>
+  {% endif %}
+{% endblock content %}

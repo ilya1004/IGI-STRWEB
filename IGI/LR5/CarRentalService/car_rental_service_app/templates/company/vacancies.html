@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Вакансии{% endblock title %}
+{% block header %}Вакансии{% endblock header %}
+{% block content %}
+<ul>
+    {% for item in vacancies %}
+    <li>
+      <div>{{item.position}}</div>
+      <div>{{item.description}}</div>
+      <br/>
+    </li>
+    {% endfor %}
+  </ul>
+{% endblock content %}
