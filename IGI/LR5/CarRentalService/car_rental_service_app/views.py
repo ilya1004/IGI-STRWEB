@@ -131,7 +131,6 @@ def car_park(request: HttpRequest):
             else:
                 logger.warning(f"Form is invalid")
         elif "sorting" in request.GET:
-            print("qwe")
             sort_param = request.GET.get("sorting")
             if sort_param == "model":
                 cars = list(cars.order_by("model"))
