@@ -3,6 +3,40 @@
 {% block title %}Сервис проката автомобилей{% endblock title %}
 {% block header %}Сервис проката автомобилей{% endblock header %}
 {% block content %}
+
+<h2>Компании-партнеры</h2>
+<div style="
+        display: flex;
+        align-items: center;
+        gap: 20px;">
+  {% for partner in partners %}
+  <div style="
+        display: flex;
+        align-items: center;
+        justify-items: start;
+        border-radius: 10px;    
+        border: 1px dashed black;
+        margin: 10px 0px;
+        padding: 0px 12px;
+        width: fit-content;
+        height: 70px;">
+    <div>
+      <img
+        src="{{ partner.image.url }}"
+        style="
+          border-radius: 10px; 
+          max-height: 50px;
+          max-width: 60px;"/>
+    </div>
+    <div style="margin: 0px 0px 0px 10px">
+      <h3 style="margin: 5px 0px 5px 0px;">{{ partner.name }}</h3>
+      <a href="{{ partner.site_url }}" style="text-decoration: none;" target="_blank">Подробнее</a>
+    </div>
+  </div>
+  
+  {% endfor %}
+</div>
+
 <h2>Последняя новость</h2>
 <div
 style="

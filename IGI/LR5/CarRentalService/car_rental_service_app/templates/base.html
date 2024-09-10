@@ -3,126 +3,139 @@
   <head>
     <meta charset="utf-8" />
     <title>{% block title %}Default{% endblock title %}</title>
+	<style>
+		.nav-link {
+			padding: 0px 10px;
+			font-size: 18px;
+			text-decoration: none;
+		}
+		.nav-bar {
+			display: flex; 
+			align-items: center;
+			height: 50px;
+			background-color: wheat;
+			width: fit-content; 
+			border: 1px solid burlywood; 
+			border-radius: 10px;
+		}
+		.btn {
+			display: inline-block; 
+			padding: 8px 15px; 
+			background-color: rgb(86, 86, 238); 
+			color: white; 
+			text-decoration: none; 
+			border-radius: 5px;
+			margin: 10px 5px 0px 0px;
+		}
+	</style> 
   </head>
   <body>
-    <div style="display: flex, display-items: start">
-		<a href={% url "home" %}>
-			Главная
-		</a>
+    <div>
+			<div style="display: flex">
+				<img src="../../assets/images/crs_logo.jpg" style="width: 140px; height: 140px; border-radius: 10px; margin: 0px 10px 0px 0px;" alt="No data"/>
+				<div>
+					<div class="nav-bar">
+						<a href={% url "home" %} class="nav-link">
+							Главная
+						</a>
+						<a href={% url "car_park" %} class="nav-link">
+							Автопарк
+						</a>
+						<a href={% url "contacts" %} class="nav-link">
+							Контакты
+						</a>
+						<a href={% url "discounts" %} class="nav-link">
+							Скидки
+						</a>
+						<a href={% url "fines" %} class="nav-link">
+							Штрафы
+						</a>
+						<a href={% url "reviews" %} class="nav-link">
+							Отзывы
+						</a>
+						<a href={% url "vacancies" %} class="nav-link">
+							Вакансии
+						</a>
+						<a href={% url "glossary" %} class="nav-link">
+							FAQ
+						</a>
+						<a href={% url "news" %} class="nav-link">
+							Новости
+						</a>
+						<a href={% url "cat_facts" %} class="nav-link">
+							Факты про котов
+						</a>
+						<a href={% url "about" %} class="nav-link">
+							О компании
+						</a>
+						<a href={% url "privacy_policy" %} class="nav-link">
+							Политика конфиденциальности
+						</a>
+					</div>
+					<div>
+						{% if request.user.is_superuser == False and request.user.is_authenticated %}
+						{% if request.user.client %}
+						<a href={% url "profile" %} class="btn">
+							Мой профиль
+						</a>
+						<a href={% url "list_orders" %} class="btn">
+							Список заказов
+						</a>
+						{% else %}
+						<a href={% url "profile" %} class="btn">
+							Мой профиль
+						</a>
+						<a href={% url "list_worker_orders" %} class="btn">
+							Список заказов клиентов
+						</a>
+						{% endif %}
+						{% endif %}
+					</div>
 		
-			<span>|</span>
-			<a href={% url "car_park" %}>
-				Автопарк
-			</a>
-			<span>|</span>
-			<a href={% url "contacts" %}>
-				Контакты
-			</a>
-			<span>|</span>
-			<a href={% url "discounts" %}>
-				Скидки
-			</a>
-			<span>|</span>
-			<a href={% url "fines" %}>
-				Штрафы
-			</a>
-			<span>|</span>
-			<a href={% url "reviews" %}>
-				Отзывы
-			</a>
-			<span>|</span>
-			<a href={% url "vacancies" %}>
-				Вакансии
-			</a>
-			<span>|</span>
-			<a href={% url "glossary" %}>
-				FAQ
-			</a>
-			<span>|</span>
-			<a href={% url "news" %}>
-				Новости
-			</a>
-			<span>|</span>
-			<a href={% url "cat_facts" %}>
-				Факты про котов
-			</a>
-			<span>|</span>
-			<a href={% url "about" %}>
-				О компании
-			</a>
-			<span>|</span>
-			<a href={% url "privacy_policy" %}>
-				Политика конфиденциальности
-			</a>
-
-			<div>
-				{% if request.user.is_superuser == False and request.user.is_authenticated %}
-				{% if request.user.client %}
-				<a href={% url "profile" %}>
-					Мой профиль
-				</a>
-				<span>|</span>
-				<a href={% url "list_orders" %}>
-					Список заказов
-				</a>
-				{% else %}
-				<a href={% url "profile" %}>
-					Мой профиль
-				</a>
-				<span>|</span>
-				<a href={% url "list_worker_orders" %}>
-					Список заказов клиентов
-				</a>
-				{% endif %}
-				{% endif %}
-			<div>
-
-			{% if request.user.is_superuser %}
-			<div>
-				<a href={% url 'admin:index' %}>
-					Администрирование
-				</a>
-				<span>|</span>
-				<a href={% url "list_users" %}>
-					Список пользователей
-				</a>
-				<span>|</span>
-				<a href={% url "list_body_types" %}>
-					Список типов кузовов машин
-				</a>
-				<span>|</span>
-				<a href={% url "list_car_brands" %}>
-					Список марок машин
-				</a>
-				<span>|</span>
-				<a href="{% url 'statistics' %}">
-					Статистика
-				</a>
+					{% if request.user.is_superuser %}
+					<div>
+						<a href={% url 'admin:index' %} class="btn">
+							Администрирование
+						</a>
+						<a href={% url "list_users" %} class="btn">
+							Список пользователей
+						</a>
+						<a href={% url "list_body_types" %} class="btn">
+							Список типов кузовов машин
+						</a>
+						<a href={% url "list_car_brands" %} class="btn">
+							Список марок машин
+						</a>
+						<a href="{% url 'statistics' %}" class="btn">
+							Статистика
+						</a>
+					</div>
+					{% endif %}
+		
+					{% if request.user.client == None and request.user.worker == None%}
+					<div>
+						<a href={% url "login" %} class="btn">
+							Войти
+						</a>
+					</div>
+					{% endif %}
+		
+					{% if request.user.client != None or request.user.worker != None%}
+					<div>
+						<a href={% url "logout" %} class="btn">
+							Выйти
+						</a>
+					</div>
+					{% endif %}
+				</div>
 			</div>
-			{% endif %}
-
-			{% if request.user.client == None and request.user.worker == None%}
-		<div>
-			<a href={% url "login" %}>
-				Войти
-			</a>
-		</div>
-		{% endif %}
-
-		{% if request.user.client != None or request.user.worker != None%}
-		<div>
-			<a href={% url "logout" %}>
-				Выйти
-			</a>
-		</div>
-		{% endif %}
 
 			
-			
+
     </div>
     <h1>{% block header %}{% endblock header %}</h1>
     <div>{% block content%}{% endblock content %}</div>
-	<br/>
-    <div>RentCar Company</div>
+    
+		<div>RentCar Company</div>
   </body>
 </html>

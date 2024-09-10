@@ -12,7 +12,8 @@ class Client(models.Model):
     patronymic = models.CharField(max_length=30)    
     address = models.CharField(max_length=70)
     phone_number = models.CharField(max_length=20, validators=[RegexValidator(regex=r'^\+\d{9,14}$',message="Вы ввели некорректный номер телефона")])
-    birthday_date = models.DateField(default="2000-01-01", validators=[MaxValueValidator(date.today() - timedelta(days=18 * 365), message="Для регистрации необходимо достичь 18 лет")])
+    birthday_date = models.DateField(default="2000-01-01", validators=[MaxValueValidator(date.today() - timedelta(days=18 * 365), 
+                                                                                         message="Для регистрации необходимо достичь 18 лет")])
     image = models.ImageField(upload_to="clients", default="clients/default_avatar.jpg")
     age = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(150)], default=0)
 
@@ -127,4 +128,9 @@ class Review(models.Model):
     rate = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])
     text = models.CharField(max_length=500)
     date = models.DateTimeField(auto_now=False, auto_now_add=False, null=True)
-    
+
+
+class PartnerCompany(models.Model):
+    name = models.CharField(max_length=50)
+    site_url = models.URLField(max_length=200)
+    image = models.ImageField(upload_to="partners", default="news/no_image.png")

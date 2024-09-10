@@ -1,0 +1,38 @@
+{% extends "base.html" %} 
+{% block title %}Информация о машине{% endblock title %} 
+{% block header %}Информация о машине{% endblock header %} 
+{% block content %}
+
+<div style="
+			display: flex;
+			align-items: start;
+			border-radius: 10px;    
+			border: 1px solid black;
+			margin: 10px 0px;">
+	<div style="margin: 0px 0px 0px 20px">
+		<h3>{{ car.brand.name }} {{ car.model }}</h3>
+		<p>Тип кузова: {{ car.body_type.name }}</p>
+		<p>Номер машины: {{ car.number }}</p>
+		<p>Год выпуска: {{ car.year }}</p>
+		<p>Стоимость машины: {{ car.price }}</p>
+		<p>Суточная стоимость проката: {{ car.daily_price }}</p>
+		{% if car.is_ordered == True %}
+		<p><b>Машина заказана</b></p>
+		{% endif %}
+		{% if request.user.client and not request.user.is_superuser and car.is_ordered == False %}
+		<form method="post" name="make_order">
+			{% csrf_token %}
+			<button 
+				type="submit" 
+				name="make_order" 
+				value={{ car.pk }}
+				style="margin: 0px 0px 10px 0px">
+				Взать напрокат
+			</button>
+		</form>
+		{% endif %}
+	</div>
+</div>
+    
+  
+{% endblock content %}

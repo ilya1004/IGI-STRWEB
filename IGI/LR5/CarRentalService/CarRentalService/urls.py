@@ -20,7 +20,7 @@ urlpatterns = [
     re_path(r"^cat_facts/$", api_views.cat_facts, name="cat_facts"),
     re_path(r"^fines/$", views.fines, name="fines"),
     re_path(r"^give_fine/(\d+)$", worker_views.give_fine, name="give_fine"),
-    
+
     re_path(r"^accounts/register/$", user_views.register, name="register"),
     re_path(r"^accounts/profile/$", user_views.profile, name="profile"),
     re_path(r"^accounts/login/$", user_views.login, name="login"),
@@ -29,6 +29,7 @@ urlpatterns = [
     re_path(r"^accounts/edit_profile/$", user_views.edit_profile, name="edit_profile"),
     
     re_path(r"^car_park/$", views.car_park, name="car_park"),
+    re_path(r"^car_park/(\d+)$", views.car_info, name="car_info"),
     re_path(r"^make_order/(\d+)$", views.make_order, name="make_order"),
     re_path(r"^success_order/(\d+)$", views.success_order, name="success_order"),
     re_path(r"^list_orders/$", user_views.list_orders, name="list_orders"),

@@ -18,7 +18,8 @@ def index(request: HttpRequest):
     cal = calendar.month(time.year, time.month)
     logger.info("Index page showed")
     new = News.objects.last()
-    return render(request, "index.html", context={"date": date, "user_timezone": user_timezone, "new": new, "calendar": cal})
+    partners = PartnerCompany.objects.all()
+    return render(request, "index.html", context={"date": date, "user_timezone": user_timezone, "new": new, "calendar": cal, "partners": partners})
 
 
 def about(request):
@@ -203,3 +204,14 @@ def fines(request: HttpRequest):
     logger.info("Fines page showed")
     fines = Fine.objects.all()
     return render(request, "fines.html", {"fines": fines})
+
+
+def car_info(request: HttpRequest, car_id: int):
+    logger.info("Car info page showed")
+    if request.method == "POST":
+        if "make_order" in request.POST:
+            car_id = request.POST.get("make_order")
+            return redirect(f"/make_order/{car_id}")
+    else:
+        car = Car.objects.get(pk=car_id)
+        return render(request, "car_info.html", {"car": car})
