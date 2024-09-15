@@ -1,0 +1,10 @@
+{% extends "base.html" %} 
+{% block title %}Добавить штраф к заказу{% endblock title%}
+{% block header %}Добавить штраф к заказу{% endblock header %}
+{% block content %}
+<form method="post">
+  {% csrf_token %} 
+  {{ form.as_p }}
+  <button type="submit">Добавить</button>
+</form>
+{% endblock content %}

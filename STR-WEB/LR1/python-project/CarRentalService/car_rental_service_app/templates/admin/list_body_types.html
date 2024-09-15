@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Типы кузовов машин{% endblock title %}
+{% block header %}Типы кузовов машин{% endblock header %}
+{% block content %}
+{% if request.user.is_superuser %}
+<form method="post" name="add_body_type">
+  {% csrf_token %}
+  <button 
+    type="submit" 
+    name="add_body_type"
+    style="margin: 0px 0px 10px 0px">
+    Добавить тип кузова
+  </button>
+</form>        
+{% endif %}
+{% for item in items %}
+<div
+  style="
+    display: flex;
+    align-items: start;
+    border-radius: 10px;    
+    border: 1px solid black;
+    margin: 10px 0px;
+  "
+>
+  <div style="margin: 0px 0px 0px 20px">
+    <h3>{{ item.name }} </h3>
+    {% if request.user.is_superuser %}
+        <form method="post" name="edit_body_type">
+          {% csrf_token %}
+          <button 
+            type="submit" 
+            name="edit_body_type"
+            value={{ item.pk }}
+            style="margin: 0px 0px 10px 0px">
+            Редактировать
+          </button>
+        </form>
+        <form method="post" name="delete_body_type">
+          {% csrf_token %}
+          <button
+            type="submit"
+            name="delete_body_type"
+            value={{ item.pk }}
+            style="margin: 0px 0px 10px 0px">
+            Удалить
+          </button>
+        </form>
+      {% endif %}
+  </div>
+</div>
+{% endfor %}
+{% endblock content %}

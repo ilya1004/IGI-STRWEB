@@ -1,0 +1,17 @@
+{% extends "base.html" %} 
+{% block title %}Словарь терминов и понятий{% endblock title %} 
+{% block header %}Словарь терминов и понятий{% endblock header %} 
+{% block content %}
+
+<div style="margin: 0px 0px 0px 20px">
+  {% for item in terms %}
+  <div>
+    <details style="font-size: 18px">
+      <summary><b>{{item.question}}</b> (добален {{item.date}})</summary>
+      {{item.response}}
+    </details>
+    <br/>
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}

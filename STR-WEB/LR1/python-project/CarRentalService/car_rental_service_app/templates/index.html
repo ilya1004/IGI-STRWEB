@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load tz %}
+{% block title %}GoCar Rentals{% endblock title %}
+{% block header %}Сервис по прокату автомобилей GoCar Rentals{% endblock header %}
+{% block content %}
+
+<h2 itemprop="partners">Компании-партнеры</h2>
+<section style="
+        display: flex;
+        align-items: center;
+        gap: 20px;">
+  {% for partner in partners %}
+  <article style="
+        display: flex;
+        align-items: center;
+        justify-items: start;
+        border-radius: 10px;    
+        border: 1px dashed black;
+        margin: 10px 0px;
+        padding: 0px 12px;
+        width: fit-content;
+        height: 70px;">
+    <img src="{{ partner.image.url }}" style="
+        border-radius: 10px; 
+        max-height: 50px;
+        max-width: 60px;"
+        alt="No data"/>
+    <div style="margin: 0px 0px 0px 10px">
+      <h3 style="margin: 5px 0px 5px 0px;">{{ partner.name }}</h3>
+      <a href="{{ partner.site_url }}" style="text-decoration: none;" target="_blank">Подробнее</a>
+    </div>
+  </article>
+  {% endfor %}
+</section>
+
+<h2>Реклама</h2>
+<section>
+  <img src="../../assets/company_add/car rental service add banner 1.jpg" 
+    alt="No data"
+    style="width: 300px;"/>
+</section>
+
+<h2 itemprop="last news">Последняя новость</h2>
+<article
+  style="
+    display: flex;
+    align-items: start;
+    border-radius: 10px;    
+    border: 1px solid black;
+    margin: 10px 0px;">
+  <img
+    src="{{ new.image.url }}"
+    height="130"
+    style="
+    margin: 10px 0px 10px 10px; 
+    border-radius: 10px;"
+    />
+  <div style="margin: 0px 0px 0px 20px">
+    <h3>{{ new.title }}</h3>
+    <p>{{ new.short_description }}</p>
+    <a href={{ new.url }} target="_blank">Читать далее</a>
+  </div>
+</article>
+
+<section>
+  <p itemprop="data">Текущая дата:</p>
+  <h3>{{date}}</h3>
+  {% get_current_timezone as TIME_ZONE %}
+  <p itemprop="time zone">Ваша временая зона: {{TIME_ZONE}}</p>
+  <p><pre>{{calendar}}</pre></p>
+</section>
+
+{% endblock content %}

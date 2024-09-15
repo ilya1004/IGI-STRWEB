@@ -1,0 +1,27 @@
+{% extends "base.html" %} 
+{% block title %}Успешный заказ{% endblock title %} 
+{% block header %}Успешный заказ{% endblock header %} 
+{% block content %}
+
+<div
+  style="
+    display: flex;
+    align-items: start;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin: 10px 0px;
+  "
+>
+  <div style="margin: 0px 0px 0px 20px">
+    <h3>{{ order.client.surname }} {{ order.client.name }} {{ order.client.patronymic }}</h3>
+    <p>Электронная почта пользователя: {{ order.client.email }}</p>
+    <p>Машина: {{ order.car.brand.name }} {{ order.car.model }}</p>
+    <p>Сумма аренды машины: {{ order.rental_amount }}</p>
+    <p>Скидка: {{ order.discount.name }} ({{ order.discount.percent }}%)</p>
+    <p>Сумма скидки: {{ order.discount_amount }}</p>
+    <p>Сумма штрафов: {{ order.fine_amount }}</p>
+    <p>Конечная сумма аренды: {{ order.final_sum }}</p>
+  </div>
+</div>
+
+{% endblock content %}

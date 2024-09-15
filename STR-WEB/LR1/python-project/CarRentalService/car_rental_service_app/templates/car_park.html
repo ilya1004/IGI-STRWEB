@@ -1,0 +1,79 @@
+{% extends "base.html" %} 
+{% block title %}Автопарк{% endblock title %} 
+{% block header %}Автопарк{% endblock header %} 
+{% block content %}
+{% if request.user.is_superuser %}
+<form method="POST" name="add_car">
+  {% csrf_token %}
+  <button 
+    type="submit" 
+    name="add_car"
+    style="margin: 0px 0px 10px 0px">
+    Добавить машину
+  </button>
+</form>
+<form method="GET" >
+  {{ form.as_p }}
+  <button 
+    type="submit" 
+    style="margin-bottom: 6px; margin-top: 6px;">Фильтровать</button>
+</form>
+{% endif %}
+<form method="GET" name="sort">
+  <select name="sorting" onchange="this.form.submit()">
+      <option value="name" 
+      {% if request.GET.sorting == 'model' %}
+      selected
+      {% endif %}
+      >Сортировать по модели</option>
+      <option value="price" 
+      {% if request.GET.sorting == 'price' %}
+      selected
+      {% endif %}
+      >Сортировать по цене</option>
+      <option value="brand" 
+      {% if request.GET.sorting == 'brand' %}
+      selected
+      {% endif %}
+      >Сортировать по марке</option>
+  </select>
+</form>
+  {% for car in cars %}
+    <section style="
+          align-items: start;
+          border-radius: 10px;
+          border: 1px solid black;
+          margin: 10px 0px;
+          height: fit-content;
+          padding: 15px;
+          width: 400px;">
+      <a href={% url "car_info" car.id %} style="font-size: 30px; text-decoration: none;">{{ car.id }}. {{ car.brand.name }} {{ car.model }}</a>
+      {% if car.is_ordered == True %}
+      <div style="font-size: 18px; padding-top: 10px;"><b>Машина заказана</b></div>
+      {% endif %}
+      {% if request.user.is_superuser %}
+      <form method="post" name="edit_car">
+        {% csrf_token %}
+        <button 
+          type="submit" 
+          name="edit_car" 
+          value={{ car.pk }}
+          style="margin: 0px 0px 10px 0px">
+          Редактировать
+        </button>
+      </form>
+      <form method="post" name="delete_car">
+        {% csrf_token %}
+        <button
+          type="submit"
+          name="delete_car"
+          value={{ car.pk }}
+          style="margin: 0px 0px 10px 0px">
+          Удалить
+        </button>
+      </form>
+      {% endif %}
+    </section>
+    
+  {% endfor %}
+{% endblock content %}
