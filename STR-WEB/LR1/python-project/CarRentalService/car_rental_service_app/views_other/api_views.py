@@ -37,6 +37,7 @@ def news(request):
     #             news.short_description = item["description"]
     #         news.url = item["url"]
     #         news.image_url = item["urlToImage"]
+    #         news.text = item["content"]
     #         if not news.image_url is None:    
     #             response1 = requests.get(news.image_url)
     #             if response1.status_code == 200:

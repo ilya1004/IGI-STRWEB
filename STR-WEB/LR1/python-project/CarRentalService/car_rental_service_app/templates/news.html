@@ -9,9 +9,7 @@
     align-items: start;
     border-radius: 10px;    
     border: 1px solid black;
-    margin: 10px 0px;
-  "
->
+    margin: 10px 0px;">
 <img
     src="{{ new.image.url }}"
     height="130"
@@ -22,7 +20,7 @@
   <div style="margin: 0px 0px 0px 20px">
     <h3>{{ new.title }}</h3>
     <p>{{ new.short_description }}</p>
-    <a href={{ new.url }} target="_blank">Читать далее</a>
+    <a href={% url "news_info" new.id %} >Читать далее</a>
   </div>
 </article>
 {% endfor %}

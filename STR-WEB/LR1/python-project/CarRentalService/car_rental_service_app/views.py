@@ -217,3 +217,9 @@ def car_info(request: HttpRequest, car_id: int):
     else:
         car = Car.objects.get(pk=car_id)
         return render(request, "car_info.html", {"car": car})
+
+
+def news_info(request: HttpRequest, news_id: int):
+    logger.info("News info has been successfuly made")
+    news_info = News.objects.get(pk=news_id)
+    return render(request, "news_info.html", {"news_info": news_info})

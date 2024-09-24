@@ -13,6 +13,7 @@ urlpatterns = [
     re_path(r"^discounts/$", views.discounts, name="discounts"),
     re_path(r"^glossary/$", views.glossary, name="glossary"),
     re_path(r"^news/$", api_views.news, name="news"),
+    re_path(r"^news/(\d+)$", views.news_info, name="news_info"),
     re_path(r"^privacy_policy/$", views.privacy_policy, name="privacy_policy"),
 	re_path(r"^reviews/$", views.reviews, name="reviews"),
     re_path(r"^add_review/$", views.add_review, name="add_review"),

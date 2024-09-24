@@ -2,131 +2,149 @@
 {% block title %}О компании{% endblock title %}
 {% block header %}О компании{% endblock header %}
 {% block content %}
-<section>
-	{{ company_info.text }}
-	<div>
-		<dfn title="Это современная компания, предоставляющая услуги по аренде автомобилей на любой срок. Мы предлагаем широкий выбор автомобилей, от эконом-класса до люксовых моделей, чтобы удовлетворить потребности каждого клиента.">GoCar Rentals</dfn>
-	</div>
-</section>
+<article>
+	{% comment %} {{ company_info.text }} {% endcomment %}
+	<p>
+		<dfn title="GoCar Rentals">GoCar Rentals</dfn> - это современная компания, предоставляющая услуги по аренде автомобилей на любой срок. Мы предлагаем широкий выбор автомобилей, от эконом-класса до люксовых моделей, чтобы удовлетворить потребности каждого клиента.
+	</p>
+</article>
 
-<section>
+<article>
+	<pre>
+		<code>
+			var q = 4;
+			Console.WriteLine(q);
+		</code>
+	</pre>
+</article>
+
+<blockquote cite="https://ru.wikipedia.org/wiki/%D0%AD%D0%B9%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD,_%D0%90%D0%BB%D1%8C%D0%B1%D0%B5%D1%80%D1%82">
+	<p>Воображение важнее знания.</p>
+	<footer>— Альберт Эйнштейн</footer>
+</blockquote>
+
+<article>
 	В <time datetime="4:00">4 часа 30 минут</time>
 	<time datetime="2033-1-5">5 января 2033 года</time>
-</section>
+</article>
 
-<section>
-	<a href="../../../assets/images/crs_logo.jpg" download="Скачать логотип сайта">Скачать логотип сайта</a>
-</section>
+<article>
+	<a href="../../../assets/images/crs_logo.jpg" download="logo.jpg">Скачать логотип сайта</a>
+</article>
 
-<section>
+<article>
 	<a href="#srt">Смотреть сертификат</a>
-</section>
+</article>
 
-<section>
+<article>
 	<blockquote cite="https://ru.wikipedia.org/wiki/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C">
 		Автомоби́ль (от др.-греч. αὐτός — сам и лат. mobilis — подвижной, скорый) — моторное безрельсовое дорожное и/или внедорожное, чаще всего автономное, транспортное средство, используемое для перевозки людей и/или грузов, обычно имеющее не менее четырёх колёс. 
 	</blockquote>
-</section>
+</article>
 
-<section>
-	<table>
-		<thead>
-				<tr>
-						<th class="t-th" id="brand">Марка</th>
-						<th class="t-th" id="model">Модель</th>
-						<th class="t-th" id="year">Год</th>
-						<th class="t-th" id="price">Цена ($)</th>
-						<th class="t-th" id="color">Цвет</th>
-				</tr>
-		</thead>
-		<tbody>
-				<tr>
-						<td class="t-td" headers="brand">Toyota</td>
-						<td class="t-td" headers="model">Corolla</td>
-						<td class="t-td" headers="year">2020</td>
-						<td class="t-td" headers="price">20000</td>
-						<td class="t-td" rowspan="2" headers="color">Синий</td>
-				</tr>
-				<tr>
-						<td class="t-td" headers="brand">Honda</td>
-						<td class="t-td" headers="model">Civic</td>
-						<td class="t-td" headers="year">2019</td>
-						<td class="t-td" rowspan="2" headers="price">22000</td>
-				</tr>
-				<tr>
-						<td class="t-td" headers="brand">Ford</td>
-						<td class="t-td" headers="model">Focus</td>
-						<td class="t-td" headers="year">2021</td>
-						<td class="t-td" headers="color">Черный</td>
-				</tr>
-				<tr>
-						<td class="t-td" headers="brand">BMW</td>
-						<td class="t-td" headers="model">X5</td>
-						<td class="t-td" headers="year">2022</td>
-						<td class="t-td" headers="price">60000</td>
-						<td class="t-td" headers="color">Белый</td>
-				</tr>
-		</tbody>
-	</table>
-</section>
+<table>
+	<thead>
+			<tr>
+					<th class="t-th" id="brand">Марка</th>
+					<th class="t-th" id="model">Модель</th>
+					<th class="t-th" id="year">Год</th>
+					<th class="t-th" id="price">Цена ($)</th>
+					<th class="t-th" id="color">Цвет</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td class="t-td" headers="brand">Toyota</td>
+					<td class="t-td" headers="model">Corolla</td>
+					<td class="t-td" headers="year">2020</td>
+					<td class="t-td" headers="price">20000</td>
+					<td class="t-td" rowspan="2" headers="color">Синий</td>
+			</tr>
+			<tr>
+					<td class="t-td" headers="brand">Honda</td>
+					<td class="t-td" headers="model">Civic</td>
+					<td class="t-td" headers="year">2019</td>
+					<td class="t-td" rowspan="2" headers="price">22000</td>
+			</tr>
+			<tr>
+					<td class="t-td" headers="brand">Ford</td>
+					<td class="t-td" headers="model">Focus</td>
+					<td class="t-td" headers="year">2021</td>
+					<td class="t-td" headers="color">Черный</td>
+			</tr>
+			<tr>
+					<td class="t-td" headers="brand">BMW</td>
+					<td class="t-td" headers="model">X5</td>
+					<td class="t-td" headers="year">2022</td>
+					<td class="t-td" headers="price">60000</td>
+					<td class="t-td" headers="color">Белый</td>
+			</tr>
+	</tbody>
+</table>
 
-<section>
+<article>
 	<iframe src="https://example.com" width="600" height="400" style="border: 1px solid #444343;">Ошибка при отображении фрейма</iframe>
-</section>
+</article>
 
-<section>
+<article>
 	<figure>
-		<video width="640" height="460" autoplay muted controls style="margin: 20px 0px 0px 0px;">
-			<source src="../../../assets/videos/Rick_Astley_Never_Gonna_Give_You_Up.mp4" type="video/mp4">
+		<video height="400" autoplay muted controls style="margin: 20px 0px 0px 0px;">
+			<source src="../../../assets/videos/cars-hd_60fps.mp4" type="video/mp4">
 			Ваш браузер не поддерживает видео тег.
 		</video>
 		<figcaption>Пример видео</figcaption>
 	</figure>
-</section>
+</article>
 
-<!-- <div style="margin-top: 50px;">
-	<audio controls autoplay loop>
-		<source src="../../../assets/music/rammstein-deutschland.mp3" type="audio/mp3">
-		Ваш браузер не поддерживает аудио тег.
-	</audio>
-</div> -->
+<!-- <object width="560" height="349" 
+   data="http://www.youtube.com/v/qzA60hHca9s?version=3"
+   type="application/x-shockwave-flash">
+   <param name="allowFullScreen" value="true">
+     <b>Sorry!</b> We can't display this content
+ </object>
+
+<iframe width="990" height="557" src="https://www.youtube.com/embed/Xs-ESvA_0n8" title="ФАРМИТЬ НЕ ДАЮТ - ASTRON Rex" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<embed
+    src="http://www.youtube.com/v/qzA60hHca9s?version=3"
+    type="application/x-shockwave-flash"
+    width="560" height="349"
+    allowfullscreen="true"/> -->
 
 <section>
 	<h2>История компании</h2>
-	<div>
-		<ul>
-			{% for key, value in history %}
-			<li>
-				<p style="font-size: 20px"><b>{{ key }}</b></p>
-				<span>{{ value }}</span>
-			</li>
-			{% endfor %}
-		</ul>
-	</div>
+	<ul>
+		{% for key, value in history %}
+		<li>
+			<p style="font-size: 20px"><b>{{ key }}</b></p>
+			<span>{{ value }}</span>
+		</li>
+		{% endfor %}
+	</ul>
 </section>
 <section>
-	<h2>Реквизиты компании</h2>
-	<div>
+	<article>
+		<h2>Реквизиты компании</h2>
 		<pre style="font-size: 16px">{{ company_info.requisites }}</pre>
-	</div>
-</section>
-<section>
-	<h2><a id="srt"></a>Сертификат</h2>
-	<div style="
-				width: 400px;
-				height: 600px;
-				border: 2px solid black;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-content: center;
-				text-align: center">
-		<h1>Свидетельво</h1>
-		<p>Сертификат соответствия стандартам качества ISO 9001:2015</p>
-		<p><samp>Выдан: 15 марта 2023 года</samp></p>
-		<p><samp>Номер сертификата: 123456789</samp></p>
-		<p>Выдавшая организация: <abbr title="Национальный центр сертификации">НЦС</abbr></p>
-		<p>Сертификат подтверждает, что<wbr/> система управления<br/> качеством компании<wbr/> соответствует<br/> международным стандартам,<br/> что гарантирует высокий<br/> уровень обслуживания<wbr/> клиентов<br/> и надежность<wbr/> предоставляемых услуг.</p>					
-	</div>
+	</article>
+	<article>
+		<h2><a id="srt"></a>Сертификат</h2>
+		<div style="
+					width: 400px;
+					height: 600px;
+					border: 2px solid black;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-content: center;
+					text-align: center">
+			<h1>Свидетельво</h1>
+			<p>Сертификат соответствия стандартам качества ISO 9001:2015</p>
+			<p><samp>Выдан: 15 марта 2023 года</samp></p>
+			<p><samp>Номер сертификата: 123456789</samp></p>
+			<p>Выдавшая организация: <abbr title="Национальный центр сертификации">НЦС</abbr></p>
+			<p>Сертификат подтверждает, что<wbr/> система управления<br/> качеством компании<wbr/> соответствует<br/> международным стандартам,<br/> что гарантирует высокий<br/> уровень обслуживания<wbr/> клиентов<br/> и надежность<wbr/> предоставляемых услуг.</p>					
+		</div>
+	</article>
 </section>
 {% endblock content %}
