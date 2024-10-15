@@ -1,0 +1,22 @@
+[type="submit"] {
+    border: 2px solid green;
+    border-radius: 7px;
+    padding: 3px 5px;
+}
+
+select {
+    border: 2px solid rgb(78, 152, 255);
+    border-radius: 7px;
+    padding: 3px 5px;
+}
+
+.worker-info {    
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    flex-wrap: wrap;
+    width: 80%;
+    border-radius: 10px;    
+    border: 1px solid black;
+    margin: 10px 0px;
+}

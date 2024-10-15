@@ -1,0 +1,12 @@
+.desc-news-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.news-info-text {
+  text-indent: 50px;
+  column-count: 2;
+  column-gap: 30px;
+  column-rule: 2px solid #ccc;
+}

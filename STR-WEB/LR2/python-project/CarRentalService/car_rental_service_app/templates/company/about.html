@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}О компании{% endblock title %}
+{% block header %}О компании{% endblock header %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'about.css' %}"/>
+<article>
+	{% comment %} {{ company_info.text }} {% endcomment %}
+	<p class="flt">
+		<dfn title="GoCar Rentals">GoCar Rentals</dfn> - это современная компания, предоставляющая услуги по аренде автомобилей на любой срок. Мы предлагаем широкий выбор автомобилей, от эконом-класса до люксовых моделей, чтобы удовлетворить потребности каждого клиента.
+	</p>
+</article>
+
+<article>
+	<pre>
+		<code>
+			var q = 4;
+			Console.WriteLine(q);
+		</code>
+	</pre>
+</article>
+<hr/>
+
+<blockquote cite="https://ru.wikipedia.org/wiki/%D0%AD%D0%B9%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD,_%D0%90%D0%BB%D1%8C%D0%B1%D0%B5%D1%80%D1%82">
+	<p>Воображение важнее знания.</p>
+	<footer>— Альберт Эйнштейн</footer>
+</blockquote>
+<hr/>
+
+<p lang="ru">Цитата на русском языке:
+	<q >Единственные мои друзья, которым я верю до конца, — это автомобили.</q>
+</p>
+<p lang="en">Цитата на английском языке:
+	<q>The only friends I trust to the end are cars.</q>
+</p>
+<p lang="de">Цитата на немецком языке:
+	<q>Die einzigen Freunde, denen ich bis zum Ende vertraue, sind Autos.</q>
+</p>
+<hr/>
+
+<article>
+	В <time datetime="4:00">4 часа 30 минут</time>
+	<time datetime="2033-1-5">5 января 2033 года</time>
+</article>
+
+
+<article>
+	<button>
+		<a href="../../../assets/images/crs_logo.jpg" download="logo.jpg">Скачать логотип сайта</a>
+	</button>
+</article>
+
+<article>
+	<a href="#srt">Смотреть сертификат</a>
+</article>
+
+<table class="table-1">
+	<thead>
+			<tr class="table-1-tr">
+					<th class="t-th" id="brand">Марка</th>
+					<th class="t-th" id="model">Модель</th>
+					<th class="t-th" id="year">Год</th>
+					<th class="t-th" id="price">Цена ($)</th>
+					<th class="t-th" id="color">Цвет</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr class="table-1-tr">
+					<td class="t-td" headers="brand">Toyota</td>
+					<td class="t-td" headers="model">Corolla</td>
+					<td class="t-td" headers="year">2020</td>
+					<td class="t-td" headers="price">20000</td>
+					<td class="t-td" rowspan="2" headers="color">Синий</td>
+			</tr>
+			<tr class="table-1-tr">
+					<td class="t-td" headers="brand">Honda</td>
+					<td class="t-td" headers="model">Civic</td>
+					<td class="t-td" headers="year">2019</td>
+					<td class="t-td" rowspan="2" headers="price">22000</td>
+			</tr>
+			<tr class="table-1-tr">
+					<td class="t-td" headers="brand">Ford</td>
+					<td class="t-td" headers="model">Focus</td>
+					<td class="t-td" headers="year">2021</td>
+					<td class="t-td" headers="color">Черный</td>
+			</tr>
+			<tr class="table-1-tr">
+					<td class="t-td" headers="brand">BMW</td>
+					<td class="t-td" headers="model">X5</td>
+					<td class="t-td" headers="year">2022</td>
+					<td class="t-td" headers="price">60000</td>
+					<td class="t-td" headers="color">Белый</td>
+			</tr>
+	</tbody>
+</table>
+
+
+<hr/>
+
+<table class="table-2">
+	<caption style="font-size: 20px;">Таблица 2</caption>
+	<thead>
+		<tr>
+			<th id="brand">Марка</th>
+			<th id="model">Модель</th>
+			<th id="year">Год</th>
+			<th id="price">Цена ($)</th>
+			<th id="color">Цвет</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td headers="brand">Toyota</td>
+			<td headers="model">Corolla</td>
+			<td headers="year">2020</td>
+			<td headers="price">20000</td>
+			<td headers="color">Синий</td>
+		</tr>
+		<tr>
+			<td headers="brand">Honda</td>
+			<td headers="model"></td>
+			<td headers="year">2019</td>
+			<td headers="price">22000</td>
+			<td headers="color">Белый</td>
+		</tr>
+		<tr>
+			<td headers="brand">Ford</td>
+			<td headers="model">Focus</td>
+			<td headers="year">2021</td>
+			<td headers="price"></td>
+			<td headers="color">Черный</td>
+		</tr>
+		<tr>
+			<td headers="brand">BMW</td>
+			<td headers="model">X5</td>
+			<td headers="year">2022</td>
+			<td headers="price">60000</td>
+			<td headers="color">Белый</td>
+		</tr>
+	</tbody>
+</table>
+
+<hr/>
+
+<article class="formatted-text">
+	Машины стали неотъемлемой частью нашей повседневной жизни. 
+	Они обеспечивают удобство передвижения и значительно экономят время. 
+	<b>Современные автомобили</b> оснащены множеством технологий, таких как навигация и системы безопасности. 
+	<span>Электромобили становятся всё более популярными благодаря своей экологичности.</span>
+	<span class="kap">Производители активно работают над улучшением производительности и снижением расхода топлива.</span>
+	Важно помнить о регулярном обслуживании автомобилей для их долговечности. 
+	Разнообразие моделей позволяет каждому выбрать подходящий вариант для своих нужд. 
+	<span class="fnt">Автоспорт привлекает множество зрителей благодаря скорости и адреналину.</span>
+	Будущее автомобилей может быть связано с автономными технологиями и искусственным интеллектом. 
+	Машины продолжают эволюционировать, открывая новые горизонты для транспортировки.
+</article>
+
+<hr/>
+
+<img src="../../../assets/images/crs_logo.jpg" title="logo" class="logo-about" alt="No data"/>
+
+<hr/>
+
+<article>
+	<iframe src="https://example.com" width="600" height="400" style="border: 1px solid #444343;">Ошибка при отображении фрейма</iframe>
+</article>
+
+<article>
+	<figure>
+		<video height="400" autoplay muted controls style="margin: 20px 0px 0px 0px;">
+			<source src="../../../assets/videos/cars-hd_60fps.mp4" type="video/mp4">
+			Ваш браузер не поддерживает видео тег.
+		</video>
+		<figcaption>Пример видео</figcaption>
+	</figure>
+</article>
+
+<section>
+	<h2>История компании</h2>
+	<ul>
+		{% for key, value in history %}
+		<li>
+			<p style="font-size: 20px"><b>{{ key }}</b></p>
+			<span>{{ value }}</span>
+		</li>
+		{% endfor %}
+	</ul>
+</section>
+<section>
+	<article>
+		<h2>Реквизиты компании</h2>
+		<pre style="font-size: 16px; font-family: 'Courier New', Courier, monospace;">{{ company_info.requisites }}</pre>
+	</article>
+	<article>
+		<h2><a id="srt"></a>Сертификат</h2>
+		<img class="sert-bg-img" src="../../../assets/images/ggt.jpg" />
+		<div class="sert-bg-wc"></div>
+		<div class="sert-qe-wc"></div>
+		<div class="sert">
+			<h1>Свидетельство</h1>	
+			<p>Сертификат соответствия стандартам качества ISO 9001:2015</p>
+			<p><samp>Выдан: 15 марта 2023 года</samp></p>
+			<p><samp>Номер сертификата: 123456789</samp></p>
+			<p>Выдавшая организация: <abbr title="Национальный центр сертификации">НЦС</abbr></p>
+			<p>Сертификат подтверждает, что<wbr/> система управления<br/> качеством компании<wbr/> соответствует<br/> международным стандартам,<br/> что гарантирует высокий<br/> уровень обслуживания<wbr/> клиентов<br/> и надежность<wbr/> предоставляемых услуг.</p>
+		</div>
+	</article>
+</section>
+{% endblock content %}

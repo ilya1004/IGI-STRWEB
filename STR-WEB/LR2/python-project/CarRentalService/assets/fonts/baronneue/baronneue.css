@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Baron Neue';
+    src: local('Baron Neue'), local('BaronNeue'), url('baronneue.woff2') format('woff2'), url('baronneue.woff') format('woff'), url('baronneue.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Baron Neue';
+    src: local('Baron Neue Italic'), local('BaronNeueItalic'), url('baronneueitalic.woff2') format('woff2'), url('baronneueitalic.woff') format('woff'), url('baronneueitalic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Baron Neue';
+    src: local('Baron Neue Bold'), local('BaronNeueBold'), url('baronneuebold.woff2') format('woff2'), url('baronneuebold.woff') format('woff'), url('baronneuebold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Baron Neue';
+    src: local('Baron Neue Bold Italic'), local('BaronNeueBoldItalic'), url('baronneuebolditalic.woff2') format('woff2'), url('baronneuebolditalic.woff') format('woff'), url('baronneuebolditalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Baron Neue';
+    src: local('Baron Neue Black'), local('BaronNeueBlack'), url('baronneueblack.woff2') format('woff2'), url('baronneueblack.woff') format('woff'), url('baronneueblack.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Baron Neue';
+    src: local('Baron Neue Black Italic'), local('BaronNeueBlackItalic'), url('baronneueblackitalic.woff2') format('woff2'), url('baronneueblackitalic.woff') format('woff'), url('baronneueblackitalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}

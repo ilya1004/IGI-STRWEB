@@ -1,0 +1,190 @@
+
+@font-face {
+  font-family: 'Clear Sans';
+  src: url("../../assets/fonts/clearsans/clearsans.woff2") format('woff2'), 
+    url('../../assets/fonts/clearsans/clearsans.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Clear Sans';
+  src: url('../../assets/fonts/clearsans/clearsansitalic.woff2') format('woff2'), 
+    url('../../assets/fonts/clearsans/clearsansitalic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Clear Sans';
+  src: url('../../assets/fonts/clearsans/clearsansmedium.woff2') format('woff2'), 
+    url('../../assets/fonts/clearsans/clearsansmedium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Clear Sans';
+  src: url('../../assets/fonts/clearsans/clearsansmediumitalic.woff2') format('woff2'), 
+  url('../../assets/fonts/clearsans/clearsansmediumitalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Clear Sans';
+  src: url('../../assets/fonts/clearsans/clearsansbold.woff2') format('woff2'), 
+  url('../../assets/fonts/clearsans/clearsansbold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Baron Neue';
+  src: url('../../assets/fonts/baronneue/baronneuebold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Baron Neue';
+  src: url('../../assets/fonts/baronneue/baronneue.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+/* @font-face {
+  font-family: "Ubuntu Mono";
+  src: url("../../assets/fonts/ubuntumono.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+} */
+/* body {
+	margin: 5px;
+  font-family: "Ubuntu Mono", Arial, sans-serif;
+} */
+
+body {
+  margin: 5px;
+  font-family: "Clear Sans", Arial, sans-serif;
+}
+
+.company-name {
+  font-family: "Baron Neue", Arial, sans-serif;
+  font-kerning: normal;
+}
+
+
+@media (max-width: 1380px) {
+  html {
+    font-size: smaller !important;
+  }
+  .nav-link {
+    font-size: 16px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    background-color: rgba(74, 117, 121, 0.911);
+  }
+}
+
+@media (min-width: 800px) and (max-width: 1200px) {
+  html {
+    background-color: rgba(143, 188, 143, 0.3);
+  }
+}
+
+@media (max-width: 800px) {
+  html {
+    background-color: rgba(248, 155, 251, 0.2);
+  }
+}
+
+
+a {
+  text-decoration: none;
+}
+
+.nav-ver {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: start;
+  gap: 10px;
+  margin: 0px 0px 10px 0px;
+  text-align: center;
+}
+
+.nav-link {
+  padding: 0px 10px;
+  font-size: 18px;
+  position: relative;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: rgb(79, 92, 119);
+}
+
+.nav-link:after {
+  position: absolute;
+  content: '';
+  bottom: -3px;
+  display: block;
+  width: 0;
+  height: 1px;
+  background: #2d3138;
+  transition: 0.3s;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.nav-link:hover:after {
+  width: 75%;
+}
+
+.nav-bar {
+  position: fixed;
+  top: 5px;
+  z-index: 100;
+  box-shadow: 3px 3px 10px 1px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  height: 50px;
+  background-color: wheat;
+  width: fit-content;
+  border: 1px solid burlywood;
+  border-radius: 10px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: rgb(86, 86, 238);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: rgb(75, 75, 198);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:active {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: rgb(62, 62, 164);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

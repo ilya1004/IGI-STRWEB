@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+		<link rel="shortcut icon" href="../../assets/images/crs_logo_ico.jpg" type="image/x-icon" />
+		<meta charset="utf-8"/>
+		<meta name="description" content="Компания GoCar Rentals" />
+		<meta name="author" content="Ilya Rabets">
+    	<title>{% block title %}Default{% endblock title %}</title>
+		<link rel="stylesheet" href="{% static 'base.css' %}">
+		<link rel="stylesheet" href="{% static 'index.css' %}">
+		<link rel="stylesheet" href="{% static 'contacts.css' %}"/>
+		<link rel="stylesheet" href="{% static 'car_park.css' %}"/>
+		<link rel="stylesheet" href="{% static "vacancies.css" %}" />
+		<link rel="stylesheet" href="{% static "news.css" %}" />
+		<link rel="stylesheet" href="{% static "add_car.css" %}" />
+		<link rel="stylesheet" href="{% static "add_review.css" %}" />
+		<link rel="stylesheet" href="{% static 'privacy_policy.css' %}" />
+		<link rel="stylesheet" href="{% static 'loader.css' %}" />
+		<link rel="stylesheet" href="{% static 'animation.css' %}" />
+  </head>
+  <body>
+		<header style="display: flex">
+			<a href={% url "home" %}>
+				<img src="../../assets/images/crs_logo.jpg" title="logo" style="
+					width: 150px; 
+					height: 150px; 
+					border-radius: 10px; 
+					margin: 0px 10px 10px 0px;" 
+					alt="No data"/>
+			</a>
+			<div>
+				<nav class="nav-bar">
+					<a href={% url "home" %} class="nav-link">
+						Главная
+					</a>
+					<a href={% url "car_park" %} class="nav-link">
+						Автопарк
+					</a>
+					<a href={% url "contacts" %} class="nav-link">
+						Контакты
+					</a>
+					<a href={% url "discounts" %} class="nav-link">
+						Скидки
+					</a>
+					<a href={% url "fines" %} class="nav-link">
+						Штрафы
+					</a>
+					<a href={% url "reviews" %} class="nav-link">
+						Отзывы
+					</a>
+					<a href={% url "vacancies" %} class="nav-link">
+						Вакансии
+					</a>
+					<a href={% url "glossary" %} class="nav-link">
+						FAQ
+					</a>
+					<a href={% url "news" %} class="nav-link">
+						Новости
+					</a>
+					{% comment %} <a href={% url "cat_facts" %} class="nav-link">
+						Факты про котов
+					</a> {% endcomment %}
+					<a href={% url "about" %} class="nav-link">
+						О компании
+					</a>
+					<a href={% url "privacy_policy" %} class="nav-link">
+						Политика конфиденциальности
+					</a>
+				</nav>
+				<h1 style="margin: 73px 0px 0px 10px;">{% block header %}{% endblock header %}</h1>
+			</div>
+		</header>
+		<div style="display: flex;">
+			<aside style="
+				height: 100%; 
+				min-width: 150px; 
+				max-width: 150px; 
+				width: 150px;">
+				<nav class="nav-ver">
+					{% if request.user.is_superuser == False and request.user.is_authenticated %}
+					{% if request.user.client %}
+					<a href={% url "profile" %} class="btn">
+						Мой профиль
+					</a>
+					<a href={% url "list_orders" %} class="btn">
+						Список заказов
+					</a>
+					{% else %}
+					<a href={% url "profile" %} class="btn">
+						Мой профиль
+					</a>
+					<a href={% url "list_worker_orders" %} class="btn">
+						Список заказов клиентов
+					</a>
+					{% endif %}
+					{% endif %}
+				</nav>
+	
+				{% if request.user.is_superuser %}
+				<nav class="nav-ver">
+					<a href={% url 'admin:index' %} class="btn">
+						Администри<wbr/>рование
+					</a>
+					<a href={% url "list_users" %} class="btn">
+						Список пользователей
+					</a>
+					<a href={% url "list_body_types" %} class="btn">
+						Список типов кузовов машин
+					</a>
+					<a href={% url "list_car_brands" %} class="btn">
+						Список марок машин
+					</a>
+					<a href="{% url 'statistics' %}" class="btn">
+						Статистика
+					</a>
+				</nav>
+				{% endif %}
+	
+				{% if request.user.client == None and request.user.worker == None%}
+				<nav class="nav-ver">
+					<a href={% url "login" %} class="btn">
+						Войти
+					</a>
+				</nav>
+				{% endif %}
+	
+				{% if request.user.client != None or request.user.worker != None%}
+				<nav class="nav-ver">
+					<a href={% url "logout" %} class="btn">
+						Выйти
+					</a>
+				</nav>
+				{% endif %}
+			</aside>
+			<section style="padding: 5px 0px 0px 10px; width: 100%">
+				{% block content %}
+				{% endblock content %}
+			</section>
+		</div>
+			
+		<hr/>
+		<footer itemprop="company name"><span class="company-name">GoCar Rentals</span></footer>
+  </body>
+</html>

@@ -1,0 +1,175 @@
+[cite^="https"] {
+  border: 2px dashed grey;
+  border-radius: 20px;
+  width: fit-content;
+  padding: 0px 10px 10px 10px;
+}
+
+tr.table-1-tr > th {
+  border: 1px solid #333;
+  padding: 8px;
+  text-align: left;
+  background-color: #f2f2f2;
+}
+
+table.table-1 td {
+  border: 1px solid #333;
+  padding: 8px;
+  text-align: left;
+}
+
+table.table-1 tr:first-child td {
+  font-weight: bold;
+  background-color: lightgreen;
+}
+
+table.table-1 tr:last-child td {
+  font-style: italic;
+  background-color: lightyellow;
+}
+
+table.table-1 tr:nth-child(2) td {
+  color: blue;
+}
+
+button > a[download="logo.jpg"] {
+  background-color: rgba(95, 158, 160, 0.5);
+  /* border-radius: 5px; */
+  padding: 3px 5px 3px 5px;
+}
+
+q:lang(ru) {
+  quotes: "\00AB" "\00BB";
+}
+
+q:lang(de) {
+  quotes: "\201E" "\201C";
+}
+
+q:lang(en) {
+	quotes: "\201C" "\201D";
+}
+
+p.flt::first-letter {
+	color: red;
+	font-size: 40px;
+	text-decoration: underline;
+	background-color: rgba(127, 255, 212, 0.568);
+}
+
+table.table-2 {
+  border-collapse: collapse;
+  border: 1px solid #333;
+  padding: 8px;
+  caption-side: top;
+  width: 40%;
+  word-wrap: none;
+}
+
+table.table-2 th {
+  border: 1px solid #333;
+  padding: 8px 15px;
+  text-align: center;
+  vertical-align: baseline;
+  background-color: #f2f2f2;
+}
+
+table.table-2 td {
+  empty-cells: show;
+  border: 1px solid #333;
+  padding: 8px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+table.table-2 td:nth-child(3) {
+  background-color: rgba(95, 158, 160, 0.3);
+}
+
+table.table-2 td:empty {
+  background-color: #f0baba;
+}
+
+.formatted-text {
+  position: relative;
+  top: 7px;
+  padding: 5px 7px;
+  margin: 4px 3px;
+  text-indent: 50px;
+  line-height: 150%;
+  word-break: keep-all;
+  text-align: left;
+}
+
+.formatted-text b {
+  text-transform: uppercase;
+}
+
+.formatted-text span {
+  letter-spacing: 2px;
+  word-spacing: 5px;
+}
+
+.formatted-text span.kap {
+  font-variant: small-caps;
+}
+
+.formatted-text span.fnt {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.logo-about {
+  width: 150px; 
+  height: 150px; 
+  border-radius: 10px; 
+  margin: 20px 0px 20px 20px;
+  -webkit-transform: rotate(25deg);
+  opacity: 0.8;
+}
+
+.sert {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 400px;
+  height: 600px;
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  border-image-source: url("../../assets/images/qwee.jpg");
+  border-image-slice: 25%;
+  border-image-width: 50px;
+  z-index: 4;
+}
+
+.sert-bg-img {
+  position: absolute;
+  bottom: -2870px;
+  left: 235px;
+  width: 300px;
+  z-index: 2;
+}
+
+.sert-bg-wc {
+  position: absolute;
+  bottom: -3000px;
+  left: 200px;
+  width: 380px;
+  height: 580px;
+  background-color: white;
+  z-index: 1;
+}
+
+.sert-qe-wc {
+  position: absolute;
+  bottom: -3000px;
+  left: 200px;
+  width: 380px;
+  height: 580px;
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  background-image: radial-gradient(rgba(74, 179, 135, 0.5), rgba(255, 255, 255, 0.3) 60%);
+  z-index: 3;
+}

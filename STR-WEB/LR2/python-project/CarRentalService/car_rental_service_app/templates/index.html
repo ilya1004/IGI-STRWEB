@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% load tz %}
+{% block title %}GoCar Rentals{% endblock title %}
+{% block header %}Сервис по прокату автомобилей <span class="company-name">GoCar Rentals</span>{% endblock header %}
+{% block content %}
+
+
+<svg class="anim-container">
+  <path
+    class="anim-man"
+    d="
+      M 80,270 l 0,-18
+      M 80,255 l -7,16
+      M 80,255 l 7,16
+      M 80,252 A 6,6 0 0,0 80,240 A 6,6 0 0,0 80,252 z"
+  />
+
+  <path
+    class="anim-ground"
+    d="M 0,280 l 500,0 l 0,120 l -500,0 l 0,-120 Z"
+  />
+
+  <path class="anim-left-leg" d="M 80,270 l -8,16" />
+
+  <path class="anim-right-leg" d="M 80,270 l 8,16" />
+
+  <image href="../../assets/images/face-side.png" class="anim-face-side" />
+
+  <image href="../../assets/images/car.png" class="anim-car" />
+
+  <image href="../../assets/images/wheel.png" class="anim-wheel-1" />
+  <image href="../../assets/images/wheel.png" class="anim-wheel-2" />
+
+  <path
+    class="anim-house"
+    d="M 140,290 l 150,0 l 0,-100 l -150,0 l 0,100 Z"
+  />
+
+  <path class="anim-roof" d="M 120,190 l 190,0 l -150,-40 Z" />
+
+  <image href="../../assets/images/window.png" class="anim-window" />
+
+  <defs>
+    <filter id="glow" x="-80%" y="-80%" width="300%" height="300%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+    </filter>
+  </defs>
+  <circle r="12" filter="url(#glow)" class="light"/>
+
+  <image href="../../assets/images/crs_logo.jpg" class="anim-logo" />
+
+  <defs>
+    <filter id="glow-sun" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="13" result="blur" />
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="blur" />
+      </feMerge>
+    </filter>
+  </defs>
+  <circle cx="70" cy="50" r="14" fill="#ffcc00" />
+  <circle
+    cx="70"
+    cy="50"
+    r="23"
+    fill="#ffcc00"
+    filter="url(#glow-sun)"
+    opacity="0.6"
+  >
+    <animate
+      attributeName="opacity"
+      values="0.6;0.9;0.6"
+      dur="2s"
+      repeatCount="indefinite"
+    />
+  </circle>
+</svg>
+
+
+<h2 itemprop="partners">Компании-партнеры</h2>
+<section id="company-partners" style="
+        display: flex;
+        align-items: center;
+        gap: 20px;">
+  {% for partner in partners %}
+  <article class="partner-block">
+    <img class="partner-img" src="{{ partner.image.url }}" alt="No data"/>
+    <div style="margin: 0px 0px 0px 10px">
+      <h3 style="margin: 5px 0px 5px 0px;">{{ partner.name }}</h3>
+      <a href="{{ partner.site_url }}" target="_blank">Подробнее</a>
+    </div>
+  </article>
+  {% endfor %}
+</section>
+
+<h2>Реклама</h2>
+<section>
+  <picture>
+    <source media="(max-width: 800px)"
+           srcset="../../assets/company_add/banner-1-x8.jpg">
+    <img src="../../assets/company_add/banner-1-x4.jpg" alt="Нет данных" />
+  </picture>
+</section>
+
+<h2>Прелоадер</h2>
+<section style="margin: 70px 0px 70px 70px">
+  <svg class="container">
+      <defs>
+        <linearGradient id="grad" gradientTransform="rotate(90)">
+          <stop offset="30%" stop-color="purple" />
+          <stop offset="90%" stop-color="hotpink" />
+        </linearGradient>
+      </defs>
+      <path
+        class="track"
+        d="
+          M 120,176
+          S 0,132 10,50
+          S 100,70 130,100
+          S 230,200 240,150
+          S 210,40 156,20
+          S 50,40 25,110
+          S 50,180 100,130
+          S 140,90 197,38
+          S 260,80 230,114
+          S 191,159 160,170
+          S 123,176 120,176 z
+          "
+        fill="none"
+      />
+      <path
+        d="
+          M 120,176
+          S 0,132 10,50
+          S 100,70 130,100
+          S 230,200 240,150
+          S 210,40 156,20
+          S 50,40 25,110
+          S 50,180 100,130
+          S 140,90 197,38
+          S 260,80 230,114
+          S 191,159 160,170
+          S 123,176 120,176 z
+          "
+        pathLength="100"
+        class="car"
+      />
+    </svg>
+</section>
+
+<h2 itemprop="last news">Последняя новость</h2>
+<article class="last-news-block">
+  <img
+    src="{{ new.image.url }}"
+    height="130"
+    style="
+    margin: 10px 0px 10px 10px; 
+    border-radius: 10px;"
+    />
+  <div style="margin: 0px 0px 0px 20px">
+    <h3>{{ new.title }}</h3>
+    <p>{{ new.short_description }}</p>
+    <a href={{ new.url }} target="_blank">Читать далее</a>
+  </div>
+</article>
+
+<section>
+  <p itemprop="data">Текущая дата:</p>
+  <h3>{{date}}</h3>
+  {% get_current_timezone as TIME_ZONE %}
+  <p itemprop="time zone">Ваша временая зона: {{TIME_ZONE}}</p>
+  <p><pre>{{calendar}}</pre></p>
+</section>
+
+{% endblock content %}

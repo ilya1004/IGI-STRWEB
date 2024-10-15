@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Список взятах напрокат машин{% endblock title %}
+{% block header %}Список взятах напрокат машин{% endblock header %}
+{% block content %}
+  {% for order in orders %}
+    <article
+      style="
+        display: flex;
+        align-items: start;
+        border-radius: 10px;    
+        border: 1px solid black;
+        margin: 10px 0px;
+        padding: 5px 15px
+      "
+    >
+      <div>
+        <h3>{{ order.date_start }} - {{ order.date_end }}</h3>
+        <p>Машина: {{ order.car.brand.name }} {{ order.car.model }}</p>
+        <p>Сумма аренды машины: {{ order.rental_amount }}</p>
+        <p>Сумма скидки: {{ order.discount_amount }}</p>
+        {% if not order.discount.name is None%}
+          <p>Скидка: {{ order.discount.name }} ({{ order.discount.percent }}%)</p>
+        {% endif %}
+        <p>Сумма штрафов: {{ order.fine_amount }}</p>
+        <p>Конечная сумма аренды: {{ order.final_sum }}</p>
+        <form method="post">
+          {% csrf_token %}
+          <button 
+            type="submit"
+            name="return_car"
+            value={{ order.pk }}
+            style="margin: 0px 0px 10px 0px">
+            Вернуть машину
+          </button>
+        </form>
+      </div>
+    </article>
+  {% endfor %}
+{% endblock content %}

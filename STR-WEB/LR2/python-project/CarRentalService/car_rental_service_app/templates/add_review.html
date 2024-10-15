@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Добавить отзыв{% endblock title %}
+{% block header %}Добавить отзыв{% endblock header %}
+{% block content %}
+    {% comment %} <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Добавить</button>
+    </form> {% endcomment %}
+
+<form method="post">
+	{% csrf_token %}
+	{% comment %} <input type="hidden" name="csrfmiddlewaretoken" value="cYjo3tbYNzdr84XJdOgvTuMXYqME0glA3sIuIav100y97SX8yI6C8R10ao2Q3Qan"> {% endcomment %}
+	<p>
+		<label for="id_title">Title:</label>
+		<input class="add-r-input-txt" type="text" name="title" maxlength="100" required id="id_title">
+	</p>	
+	<p>
+		<label for="id_rate">Rate:</label>
+		<input class="add-r-input-num" type="number" name="rate" required min='0' max='10' id="id_rate" style="width: 155px">	
+	</p>	
+	<p>
+		<label for="id_text">Text:</label>
+		<input class="add-r-input-txt" type="text" name="text" maxlength="500" required id="id_text">
+	</p>
+	<button type="submit">Добавить</button>
+</form>
+{% endblock content %}
+

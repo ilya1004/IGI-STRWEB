@@ -1,0 +1,94 @@
+
+
+[href$=".by/"] {
+  background-image: url("../../assets/images/by.png");
+  background-repeat: no-repeat;
+  background-size: 25px;
+  background-position: 1px;
+  padding: 0px 0px 0px 30px;
+}
+
+[href$="en"] {
+  background-image: url("../../assets/images/glob1.png");
+  background-repeat: no-repeat;
+  background-size: 23px;
+  padding: 5px 0px 5px 25px;
+}
+
+a[target="_blank"] {
+  color: blue; 
+  text-decoration: none; 
+}
+
+a[target="_blank"]:link {
+  color: rgb(14, 155, 248);
+}
+
+a[target="_blank"]:visited {
+  color: purple; 
+}
+
+a[target="_blank"]:hover {
+  color: green;
+  text-decoration: underline;
+}
+
+a[target="_blank"]:active {
+  color: red;
+}
+
+a[target="_blank"]:focus {
+  outline: 2px solid orange;
+}
+
+.partner-block {
+  display: flex;
+  align-items: center;
+  border-radius: 20px 10px;    
+  border: 1px dashed black;
+  margin: 10px 0px;
+  padding: 0px 12px;
+  width: fit-content;
+  height: 70px;
+  background-color: azure;
+  box-shadow: 5px 3px 10px 1px grey;
+}
+
+.partner-img {
+  border-radius: 10px; 
+  max-height: 50px;
+  max-width: 60px
+}
+
+.last-news-block {
+  display: flex;
+  align-items: start;
+  border-radius: 10px;    
+  border: 1px solid black;
+  max-width: 95%;
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
+
+.g1 {
+  width: 400px;
+  height: 300px;
+  border: 1px solid black;
+  background-image: linear-gradient(pink 20px, yellow 100px, red);
+}
+
+.g2 {
+  width: 400px;
+  height: 300px;
+  border: 1px solid black;
+  background-image: radial-gradient(at 100px 50px, red, blue);
+}
+
+.g3 {
+  width: 400px;
+  height: 300px;
+  border: 1px solid black;
+  background-image: radial-gradient(circle farthest-corner at 30px 20px, #fff, #000);
+}
+

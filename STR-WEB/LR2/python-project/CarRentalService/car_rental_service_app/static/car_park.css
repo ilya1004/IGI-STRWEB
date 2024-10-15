@@ -1,0 +1,18 @@
+.car-list {
+  display: grid;
+  width: 75%;
+  max-width: 95%;
+  margin-top: 10px;
+  grid-template-columns: auto auto;
+  grid-gap: 15px 15px;
+}
+
+.car-list-item {
+  align-items: start;
+  border-radius: 10px;
+  border: 1px solid black;
+  height: fit-content;
+  padding: 15px;
+  min-width: fit-content;
+  max-width: 500px;
+}

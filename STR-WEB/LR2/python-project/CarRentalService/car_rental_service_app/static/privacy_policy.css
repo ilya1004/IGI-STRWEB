@@ -1,0 +1,23 @@
+.ul-dec {
+	padding-left: 20px; 
+	list-style-type: none;
+}
+
+.ul-dec > li:before { 
+	content: "\2605"; 
+} 
+
+.bna-text::before {
+	color: darkgoldenrod;
+	content: " Политика конфиденциальности: ";
+}
+
+.bna-text::after {
+	color: darkgoldenrod;
+	content: " - см. далее ";
+}
+
+::selection {
+	background-color: rgba(41, 166, 224, 0.616); 
+	color: orange;
+}

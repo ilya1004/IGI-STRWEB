@@ -1,0 +1,67 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block title %}Добавление новой записи о машине{% endblock title%}
+{% block header %}Добавление новой записи о машине{% endblock header %}
+{% block content %}
+
+{% comment %} <form method="post">
+  {% csrf_token %} 
+  {{ form.as_p }}
+  <button type="submit">Добавить</button>
+</form> {% endcomment %}
+
+<form method="post">
+  {% csrf_token %}
+  <p>
+    <label for="id_brand">Brand:</label>
+    <select name="brand" required id="id_brand" required>
+      <option value="" selected>---------</option>
+      {% for brand in brands %}
+        <option value="{{ brand.pk }}">{{ brand.name }}</option>
+      {% endfor %}
+    </select>
+  </p>
+  <p>
+    <label for="id_body_type">Body type:</label>
+    <select name="body_type" required id="id_body_type">
+      <option value="" selected>---------</option>
+      {% for type in body_types %}
+        <option value="{{ type.pk }}">{{ type.name }}</option>
+      {% endfor %}
+    </select>
+  </p>
+  <p>
+    <label for="id_model">Model:</label>
+    <input type="text" name="model" maxlength="30" required id="id_model">
+  </p>
+  <p>
+    <label for="id_year">Year:</label>
+    <input type="number" name="year" required id="id_year" min="1900">
+  </p>
+  <p>
+    <label for="id_price">Price:</label>
+    <input type="number" name="price" step="0.01" required id="id_price" min="0">
+  </p>
+  <p>
+    <label for="id_daily_price">Daily price:</label>
+    <input type="number" name="daily_price" step="0.01" required id="id_daily_price" min="0">
+  </p>
+  <p>
+    <label for="id_color">Color:</label>
+    <input type="text" name="color" id="id_color" disabled>
+  </p>
+  <p>
+    <span>Is avaliable:</span>
+    <label for="id_aval1">Yes</label>
+    <input type="radio" name="text"  id="id_aval1">
+    <label for="id_aval2">No</label>
+    <input type="radio" name="text" id="id_aval2">
+  </p>
+  <p></p>
+    <label for="id_bc">Business class:</label>
+    <input type="checkbox" name="text" id="id_bc">
+  </p>
+  <button type="submit">Добавить</button>
+</form>
+
+{% endblock content %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block title %}Контакты{% endblock title %} 
+{% block header %}Контакты{% endblock header %} 
+{% block content %}
+{% if request.user.is_superuser %}
+<form method="post" name="add_worker">
+  {% csrf_token %}
+  <button 
+    type="submit" 
+    name="add_worker"
+    style="margin: 0px 0px 10px 0px">
+    Добавить сотрудника
+  </button>
+</form>
+{% endif %}
+  {% for worker in workers %}
+    <section class="worker-info">
+      <div>
+        <img
+          src="{{ worker.image.url }}"
+          height="230"
+          style="
+              margin: 10px 0px 10px 10px; 
+              border-radius: 10px;"
+        />
+        {% if request.user.is_superuser %}
+          <form method="post" name="edit_worker">
+            {% csrf_token %}
+            <button 
+              type="submit" 
+              name="edit_worker"
+              value={{ worker.pk }}
+              style="margin: 0px 0px 10px 10px">
+              Редактировать
+            </button>
+          </form>
+          <form method="post" name="delete_worker">
+            {% csrf_token %}
+            <button
+              type="submit"
+              name="delete_worker"
+              value={{ worker.pk }}
+              style="margin: 0px 0px 10px 10px">
+              Удалить
+            </button>
+          </form>
+          {% endif %}
+      </div>
+      <div style="margin: 0px 0px 0px 20px; max-width: 700px;">
+        <h3>{{ worker.name }} {{ worker.surname }}</h3>
+        <p><b>Должность:</b> {{ worker.position }}</p>
+        <p><b>Описание работы:</b> {{ worker.work_description }}</p>
+        <p><b>Электронная почта:</b><a href="mailto:{{ worker.email }}"> {{ worker.email }}</a></p>
+        <p><b>Номер телефона:</b><a href="tel:{{ worker.phone_number }}"> {{ worker.phone_number }}</a></p>
+      </div>
+    </section>
+  {% endfor %}
+{% endblock content %}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="animation.css" />
+  </head>
+  <body style="background-color: rgb(71, 71, 71)">
+    <svg class="anim-container">
+      <path
+        class="anim-man"
+        d="
+          M 80,270 l 0,-18
+          M 80,255 l -7,16
+          M 80,255 l 7,16
+          M 80,252 A 6,6 0 0,0 80,240 A 6,6 0 0,0 80,252 z"
+      />
+
+      <path
+        class="anim-ground"
+        d="M 0,280 l 500,0 l 0,120 l -500,0 l 0,-120 Z"
+      />
+
+      <path class="anim-left-leg" d="M 80,270 l -8,16" />
+
+      <path class="anim-right-leg" d="M 80,270 l 8,16" />
+
+      <image href="../../assets/images/face-side.png" class="anim-face-side" />
+
+      <image href="../../assets/images/car.png" class="anim-car" />
+
+      <image href="../../assets/images/wheel.png" class="anim-wheel-1" />
+      <image href="../../assets/images/wheel.png" class="anim-wheel-2" />
+
+      <path
+        class="anim-house"
+        d="M 140,290 l 150,0 l 0,-100 l -150,0 l 0,100 Z"
+      />
+
+      <path class="anim-roof" d="M 120,190 l 190,0 l -150,-40 Z" />
+
+      <image href="../../assets/images/window.png" class="anim-window" />
+
+      <defs>
+        <filter id="glow" x="-80%" y="-80%" width="300%" height="300%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+        </filter>
+      </defs>
+      <circle r="12" filter="url(#glow)" class="light" />
+
+      <image href="../../assets/images/crs_logo.jpg" class="anim-logo" />
+
+      <defs>
+        <filter id="glow-sun" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="13" result="blur" />
+          <feMerge>
+            <feMergeNode />
+            <feMergeNode in="blur" />
+          </feMerge>
+        </filter>
+      </defs>
+      <circle cx="70" cy="50" r="14" fill="#ffcc00" />
+      <circle
+        cx="70"
+        cy="50"
+        r="23"
+        fill="#ffcc00"
+        filter="url(#glow-sun)"
+        opacity="0.6"
+      >
+        <animate
+          attributeName="opacity"
+          values="0.6;0.9;0.6"
+          dur="2s"
+          repeatCount="indefinite"
+        />
+      </circle>
+    </svg>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Скидки{% endblock title %}
+{% block header %}Скидки{% endblock header %}
+{% block content %}
+<link rel="stylesheet" href={% static "discounts.css" %} />
+{% if request.user.is_superuser %}
+<form method="post" name="add-discount-form">
+  {% csrf_token %}
+  <button 
+    type="submit" 
+    name="add-discount"
+    class="btn">
+    Добавить скидку
+  </button>
+</form>        
+{% endif %}
+{% for discount in discounts %}
+  <article class="description"
+    style="
+      border-radius: 10px;
+      border: 1px solid black;
+      margin: 10px 0px 10px 0px;
+      padding: 0px 10px 0px 20px;
+      max-width: 30%">
+      <h2>{{ discount.name }} </h2>
+      <p>Процент скидки: <strong>{{ discount.percent }}%</strong></p>
+      <p>Промокод: {{ discount.promocode }}</p>
+      {% if request.user.is_superuser %}
+        <form method="post" name="edit-discount-form">
+          {% csrf_token %}
+          <button 
+            type="submit" 
+            name="edit-discount"
+            value={{ discount.pk }}
+            style="margin: 0px 0px 10px 0px">
+            Редактировать
+          </button>
+        </form>
+        <form method="post" name="delete-discount-form">
+          {% csrf_token %}
+          <button
+            type="submit"
+            name="delete-discount"
+            value={{ discount.pk }}
+            style="margin: 0px 0px 10px 0px">
+            Удалить
+          </button>
+        </form>
+      {% endif %}
+  </article>
+{% endfor %}
+{% endblock content %}

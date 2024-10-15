@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Новость{% endblock title %}
+{% block header %}{{ news_info.title }}{% endblock header %}
+{% block content %}
+<article
+  style="margin: 10px 0px; width: 60%">
+    <p>
+      <a href={% url "news" %} style="font-size: 18px; margin: 0px 0px 0px 20px; text-decoration: underline">
+        Назад
+      </a>
+    </p>
+	<img
+    src="{{ news_info.image.url }}"
+    height="200"
+    style="
+    margin: 10px 0px 20px 20px; 
+    border-radius: 10px;"
+    />
+  <div style="margin: 0px 0px 0px 20px">
+    <div class="news-info-text">{{ news_info.text }}</div>
+    <p style="margin: 15px 0px 0px 0px">
+      <a href={{ news_info.url }} target="_blank">Ссылка на новость</a>
+    </p>
+  </div>
+</article>
+{% endblock content %}

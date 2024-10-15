@@ -1,0 +1,23 @@
+.vac-list li {
+  padding: 10px;
+  background-color: rgb(231, 231, 231);
+	width: 80%;
+}
+
+.vac-list li:first-child {
+  font-weight: bold;
+  background-color: rgb(181, 215, 226);
+}
+
+.vac-list li:last-child {
+  font-style: italic;
+  background-color: rgb(240, 184, 184);
+}
+
+.vac-list li:nth-child(3) {
+  color: green;
+}
+
+.vac-list li:last-child {
+  float: right;
+}

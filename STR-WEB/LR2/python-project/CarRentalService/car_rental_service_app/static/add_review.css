@@ -1,0 +1,17 @@
+input.add-r-input-txt[type="text"] {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+input.add-r-input-num[type="number"] {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+input.add-r-input-txt[type="text"]:focus {
+  font-weight: bold;
+}
+
+input.add-r-input-num[type="number"]:focus {
+  font-weight: bold;
+}

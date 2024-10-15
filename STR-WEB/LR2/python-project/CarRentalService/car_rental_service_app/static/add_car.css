@@ -1,0 +1,37 @@
+
+input:enabled, select:enabled {
+    background-color: white; 
+    border: 2px solid #2ecc71; 
+    border-radius: 7px;
+}
+
+
+input[required], select[required] {
+    border: 2px solid #eba9a2;
+    border-radius: 7px;
+}
+
+
+input:disabled {
+    background-color: #f0f0f0; 
+    border: 2px solid #bdc3c7; 
+    border-radius: 7px;
+}
+
+
+input[type="number"]:invalid {
+    border: 2px solid #df0303; 
+    border-radius: 7px;
+}
+
+
+input[type="checkbox"]:checked, input[type="radio"]:checked {
+    accent-color: #3498db; 
+    border-radius: 7px;
+}
+
+
+input:focus, select:focus {
+    outline: none;
+    border: 2px solid #3498db;
+}

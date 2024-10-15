@@ -1,0 +1,33 @@
+
+
+.container {
+  width: 260px;
+  height: 200px;
+  transform-origin: center;
+  overflow: visible;
+  background-color: black;
+  transform: scale(1.5);
+}
+
+.car {
+  fill: none;
+  stroke-width: 4px;
+  stroke: url(#grad);
+  /* stroke: linear-gradient(red, blue); */
+  stroke-dasharray: 30 70;
+  stroke-linecap: round;
+  transform-origin: center;
+  color: w;
+  animation: travel 1.5s linear infinite;
+}
+
+@keyframes travel {
+  0% {
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dashoffset: -100;
+  }
+}
+
